@@ -9,23 +9,23 @@ class C_User extends CI_Controller
 	{
 		parent::__construct();
 		//Do your magic here
-		$this->API="http://localhost/megawe";
+		$this->API="http://localhost/rbkk";
 		
 	}
 
 
 	public function index()
 	{
-		$data['users'] = json_decode($this->curl->simple_get($this->API.'/user/akun'));
-		$this->load->view('tesview', $data);
+		 $data['users'] = json_decode($this->curl->simple_get($this->API.'/user/akun'));
+		// $this->load->view('tesview', $data);
 		
-		// $data['title'] = 'User';
-		// $this->load->view('Template/Head', $data);
-		// $this->load->view('Template/Sidebar');
-		// $this->load->view('Template/Topnavbar');
-		// $this->load->view('User/Index');
-		// $this->load->view('Template/Footer');
-		// $this->load->view('Template/Js');
+		$data['title'] = 'User';
+		$this->load->view('Template/Head', $data);
+		$this->load->view('Template/Sidebar');
+		$this->load->view('Template/Topnavbar');
+		$this->load->view('User/Index');
+		$this->load->view('Template/Footer');
+		$this->load->view('Template/Js');
 	}
 }
 
