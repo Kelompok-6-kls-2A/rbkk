@@ -50,10 +50,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
-// API_Backend
-$route['user'] = 'api/dashboard/index';
-$route['user/akun'] = 'api/user/index';
+// Rest API_Backend
+$route['a_user'] = 'api/dashboard/index';
+$route['a_user/akun'] = 'api/user/index';
 
+
+//Rest Client
+$route['user/akun'] = 'client/C_user/index';
 
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
