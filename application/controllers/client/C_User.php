@@ -9,16 +9,14 @@ class C_User extends CI_Controller
 	{
 		parent::__construct();
 		//Do your magic here
-		$this->API="http://localhost/rbkk";
-		
+		$this->API = "http://localhost/rbkk";
 	}
 
 
 	public function index()
 	{
-		 $data['users'] = json_decode($this->curl->simple_get($this->API.'/a_user/akun'),true);
-		// $this->load->view('tesview', $data);
-		
+		$data['users'] = json_decode($this->curl->simple_get($this->API . '/a_user/akun'));
+
 		$data['title'] = 'User';
 		$this->load->view('Template/Head', $data);
 		$this->load->view('Template/Sidebar');

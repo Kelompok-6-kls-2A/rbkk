@@ -15,8 +15,8 @@ class M_user extends CI_Model
 	{
 		# code...
 		$this->db->SELECT('*')
-			->FROM('user')
-			->JOIN('lvluser', 'lvluser.id_lvl = user.id_user');
+			->FROM('tb_user')
+			->JOIN('lvluser', 'lvluser.id_lvl = tb_user.id_user');
 		$query = $this->db->get()->result();
 
 		$response['status'] = 200;
