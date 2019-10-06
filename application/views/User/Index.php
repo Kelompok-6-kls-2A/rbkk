@@ -24,7 +24,7 @@
         </div>
         <div class="x_content">
           <p class="text-muted font-13 m-b-30">
-          <a href="" class="btn btn-primary"><span class="fa fa-plus"></span> Tambah data</a>
+            <a href="" class="btn btn-primary"><span class="fa fa-plus"></span> Tambah data</a>
           </p>
 
           <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">
@@ -52,7 +52,7 @@
                     <?= $value->tl_user ?></td>
                   <td><?= $value->email ?></td>
                   <td><?= $value->no_hp ?></td>
-<td><?= $value->kategori_user?></td>
+                  <td><?= $value->kategori_user ?></td>
                   <td><a href="" class="btn btn-primary"><span class="fa fa-edit"></span> edit</a><a href="" class="btn btn-danger"><span class="fa fa-trash"></span> hapus</a></td>
                 </tr>
               <?php endforeach; ?>
