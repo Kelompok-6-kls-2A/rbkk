@@ -42,19 +42,17 @@
                         </tr>
                       </thead>
                       <tbody>
-											<?php foreach($users as $value) :?>
+											<?php foreach($users->person as $key => $value) :?>
                         <tr>
-													<td><?= $value->id_user; 
-													echo json_last_error(); 
-													echo json_last_error_msg(); ?></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
+                          <td><?= ($key+1) ?></td>
+                          <td><?= $value->nama_user?></td>
+                          <td>System Architect</td>
+                          <td>Edinburgh</td>
+                          <td>61</td>
+                          <td>2011/04/25</td>
+                          <td>$320,800</td>
+                          <td>5421</td>
+                          <td>t.nixon@datatables.net</td>
                         </tr>
 												<?php endforeach ;?>
                       </tbody>

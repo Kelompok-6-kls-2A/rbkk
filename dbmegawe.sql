@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 03, 2019 at 11:00 PM
+-- Generation Time: Oct 06, 2019 at 05:10 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.3.2
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `berkas`
 --
 
-CREATE TABLE `berkas` (
+CREATE TABLE `tb_berkas` (
   `id_berkas` int(11) NOT NULL,
   `id_pekerjaan` int(11) NOT NULL,
   `SKCK` varchar(50) NOT NULL,
@@ -64,7 +64,7 @@ INSERT INTO `lvluser` (`id_lvl`, `kategori_user`) VALUES
 -- Table structure for table `pekerjaan`
 --
 
-CREATE TABLE `pekerjaan` (
+CREATE TABLE `tb_pekerjaan` (
   `id_pekerjaan` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `nama_kategori_pekerjaan` varchar(50) NOT NULL,
@@ -80,7 +80,7 @@ CREATE TABLE `pekerjaan` (
 -- Table structure for table `user`
 --
 
-CREATE TABLE `user` (
+CREATE TABLE `tb_user` (
   `id_user` int(11) NOT NULL,
   `nama_user` varchar(50) NOT NULL,
   `alamat_user` text NOT NULL,
@@ -97,7 +97,7 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id_user`, `nama_user`, `alamat_user`, `tempattl_user`, `tl_user`, `email`, `password`, `no_hp`, `foto_profil`, `idlvl`) VALUES
+INSERT INTO `tb_user` (`id_user`, `nama_user`, `alamat_user`, `tempattl_user`, `tl_user`, `email`, `password`, `no_hp`, `foto_profil`, `idlvl`) VALUES
 (2, 'Abdul Qhodir Zaelany', 'tirto', 'malang', '2019-10-09', 'qodirtok@gmail.com', 'asd', '564654654', '2321231', 1);
 
 --
@@ -107,7 +107,7 @@ INSERT INTO `user` (`id_user`, `nama_user`, `alamat_user`, `tempattl_user`, `tl_
 --
 -- Indexes for table `berkas`
 --
-ALTER TABLE `berkas`
+ALTER TABLE `tb_berkas`
   ADD PRIMARY KEY (`id_berkas`),
   ADD KEY `fk_kerjaan` (`id_pekerjaan`);
 
@@ -120,14 +120,14 @@ ALTER TABLE `lvluser`
 --
 -- Indexes for table `pekerjaan`
 --
-ALTER TABLE `pekerjaan`
+ALTER TABLE `tb_pekerjaan`
   ADD PRIMARY KEY (`id_pekerjaan`),
   ADD KEY `fk_users` (`id_user`);
 
 --
 -- Indexes for table `user`
 --
-ALTER TABLE `user`
+ALTER TABLE `tb_user`
   ADD PRIMARY KEY (`id_user`),
   ADD KEY `mnbmnbmnb` (`idlvl`);
 
@@ -138,7 +138,7 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT for table `berkas`
 --
-ALTER TABLE `berkas`
+ALTER TABLE `tb_berkas`
   MODIFY `id_berkas` int(11) NOT NULL AUTO_INCREMENT;
 
 --
@@ -150,13 +150,13 @@ ALTER TABLE `lvluser`
 --
 -- AUTO_INCREMENT for table `pekerjaan`
 --
-ALTER TABLE `pekerjaan`
+ALTER TABLE `tb_pekerjaan`
   MODIFY `id_pekerjaan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
-ALTER TABLE `user`
+ALTER TABLE `tb_user`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
@@ -166,19 +166,19 @@ ALTER TABLE `user`
 --
 -- Constraints for table `berkas`
 --
-ALTER TABLE `berkas`
-  ADD CONSTRAINT `fkpekerjaan` FOREIGN KEY (`id_pekerjaan`) REFERENCES `pekerjaan` (`id_pekerjaan`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `tb_berkas`
+  ADD CONSTRAINT `fkpekerjaan` FOREIGN KEY (`id_pekerjaan`) REFERENCES `tb_pekerjaan` (`id_pekerjaan`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `pekerjaan`
 --
-ALTER TABLE `pekerjaan`
-  ADD CONSTRAINT `pekerjaan_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
+ALTER TABLE `tb_pekerjaan`
+  ADD CONSTRAINT `pekerjaan_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `tb_user` (`id_user`);
 
 --
 -- Constraints for table `user`
 --
-ALTER TABLE `user`
+ALTER TABLE `tb_user`
   ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`idlvl`) REFERENCES `lvluser` (`id_lvl`);
 COMMIT;
 
