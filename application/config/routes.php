@@ -58,6 +58,10 @@ $route['a_user/akun'] = 'api/user/index';
 //Rest Client
 $route['user/akun'] = 'client/C_user/index';
 
+
+//Login
+$route['login'] = 'client/C_login/index';
+
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
