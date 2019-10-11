@@ -38,7 +38,7 @@
 										<h4 class="modal-title" id="myModalLabel">Tambah user</h4>
 									</div>
 									<div class="modal-body">
-										<form method="POST" action="<?= base_url() ?>user/store" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+										<form method="POST" action="<?= base_url() ?>client/c_user/store" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 
 											<div class="form-group">
 												<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nama <span class="required">*</span>
@@ -165,9 +165,9 @@
 									<td><?= $value->no_hp ?></td>
 									<td><?= $value->kategori_user ?></td>
 									<td>
-									<a href="" class="btn btn-primary"><span class="fa fa-edit"></span> edit</a>
-									
-									<a href="<?= base_url() ?>user/destroy/<?= $value->id_user ?>" class="btn btn-danger"><span class="fa fa-trash"></span> hapus</a></td>
+										<a href="<?= base_url() ?>client/c_user/edit/<?= $value->id_user ?>" class="btn btn-primary"><span class="fa fa-edit"></span> edit</a>
+
+										<a href="<?= base_url() ?>client/c_user/destroy/<?= $value->id_user ?>" class="btn btn-danger"><span class="fa fa-trash"></span> hapus</a></td>
 								</tr>
 							<?php endforeach; ?>
 						</tbody>

@@ -61,19 +61,14 @@ class C_User extends CI_Controller
 	public function edit($id)
 	{
 		# code...
-		if (empty($id)) {
-			# code...
-			echo "eror";
-		} else {
-			# code...
-			$data['title'] = 'Edit';
-			$this->load->view('Template/Head', $data);
-			$this->load->view('Template/Sidebar');
-			$this->load->view('Template/Topnavbar');
-			$this->load->view('User/Edit');
-			$this->load->view('Template/Footer');
-			$this->load->view('Template/Js');
-		}
+		$data = $this->curl->simple_get($this->API . '/a_user/show', array('id_user' => $id), array(CURLOPT_BUFFERSIZE => 10));
+		$data['title'] = 'Edit';
+		$this->load->view('Template/Head', $data);
+		$this->load->view('Template/Sidebar');
+		$this->load->view('Template/Topnavbar');
+		$this->load->view('User/Edit');
+		$this->load->view('Template/Footer');
+		$this->load->view('Template/Js');
 	}
 
 	public function update()
@@ -100,7 +95,8 @@ class C_User extends CI_Controller
 			# code...
 			$this->session->set_flashdata('hasil', 'Update data gagal');
 		}
-		redirect('client/c_user');
+		$data = $this->uri->segment(4);
+		redirect('client/c_user/edit/', $data);
 	}
 
 	public function destroy($id)
