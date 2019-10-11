@@ -15,7 +15,7 @@ class C_User extends CI_Controller
 
 	public function index()
 	{
-		$data['users'] = json_decode($this->curl->simple_get($this->API . '/a_user/akun'));
+		$data['users'] = json_decode($this->curl->simple_get($this->API . '/a_user'));
 
 		$data['title'] = 'User';
 		$this->load->view('Template/Head', $data);

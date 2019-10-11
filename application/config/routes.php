@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -50,10 +50,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 
-// Rest API_Backend
+// Rest API_Backend user
 $route['a_user'] = 'api/dashboard/index';
-$route['a_user/akun'] = 'api/user/index';
-
+$route['a_user'] = 'api/user/index';
+$route['a_user/store'] = 'api/user/store';
+$route['a_user/update'] = 'api/user/update';
+$route['a_user/destroy'] = 'api/user/destroy';
 
 //Rest Client
 $route['user/akun'] = 'client/C_user/index';
