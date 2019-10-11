@@ -31,6 +31,32 @@ class M_user extends CI_Model
 		return $response;
 	}
 
+	public function getById($id)
+	{
+		# code...
+		if (empty($id)) {
+			# code...
+			$response['status'] = 502;
+			$response['error'] = true;
+			$response['message'] = "Data tidak ditemukan";
+			return $response;
+		} else {
+			# code...
+			$this->db->SELECT('*')
+				->FROM($this->_table)
+				->JOIN('lvluser', 'lvluser.id_lvl = tb_user.idlvl')
+				->WHERE('id_user', $id);
+
+			$query = $this->db->get()->result();
+
+			$response['status'] = 200;
+			$response['error'] = false;
+			$response['person'] = $query;
+
+			return $response;
+		}
+	}
+
 	public function insert($data)
 	{
 		# code...

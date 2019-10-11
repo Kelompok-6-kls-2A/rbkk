@@ -16,8 +16,14 @@ class User extends REST_Controller
 
 	public function index_get()
 	{
-		$response = $this->M_user->getAll();
-		$this->response($response);
+		return $this->response($this->M_user->getAll());
+	}
+
+	public function show_get()
+	{
+		// Get Method 
+		$id = $this->get('id_user');
+		return $this->response($this->M_user->getById($id));
 	}
 
 	public function store_post()
@@ -54,8 +60,8 @@ class User extends REST_Controller
 				"foto_profil"		=> $this->post('foto_profil'),
 				"idlvl"				=> $this->post('idlvl'),
 			);
-			$response = $this->M_user->insert($data);
-			return $this->response($response);
+
+			return $this->response($this->M_user->insert($data));
 		}
 	}
 
@@ -73,14 +79,12 @@ class User extends REST_Controller
 			"foto_profil"		=> $this->put('foto_profil'),
 			"idlvl"				=> $this->put('idlvl'),
 		);
-		$response = $this->M_user->update($data, $this->put('id_user'));
-		return $this->response($response);
+		return $this->response($this->M_user->update($data, $this->put('id_user')));
 	}
 
 	public function destroy_delete()
 	{
-		$response = $this->M_user->delete($this->delete('id_user'));
-		return $this->response($response);
+		return $this->response($this->M_user->delete($this->delete('id_user')));
 	}
 }
 /** End of file User.php **/

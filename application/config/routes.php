@@ -51,23 +51,24 @@ defined('BASEPATH') or exit('No direct script access allowed');
 */
 
 // Rest API_Backend user
-$route['a_user'] = 'api/dashboard/index';
-$route['a_user'] = 'api/user/index';
-$route['a_user/store'] = 'api/user/store';
-$route['a_user/update'] = 'api/user/update';
-$route['a_user/destroy'] = 'api/user/destroy';
+// $route['a_user'] = 'api/dashboard/index';
+// $route['a_user'] = 'api/user/index';
+// $route['a_user/store'] = 'api/user/store';
+// $route['a_user/show/(:any)'] = 'api/user/show';
+// $route['a_user/update'] = 'api/user/update';
+// $route['a_user/destroy'] = 'api/user/destroy';
 
 //Rest Client
 
 //Dashboard
-$route['user/Dashboard'] = 'client/C_Dashboard/index';
+// $route['user/Dashboard'] = 'client/C_Dashboard/index';
 
 //User
-$route['user/akun'] = 'client/C_user/index';
-$route['user/store'] = 'client/C_user/store';
-$route['user/edit'] = 'client/C_user/edit';
-$route['user/update'] = 'client/C_user/update';
-$route['user/destroy/(:any)'] = 'client/C_user/destroy/$1';
+// $route['user/akun'] = 'client/C_user/index';
+// $route['user/store'] = 'client/C_user/store';
+// $route['user/edit'] = 'client/C_user/edit';
+// $route['user/update'] = 'client/C_user/update';
+// $route['user/destroy/(:any)'] = 'client/C_user/destroy/$1';
 
 //Login
 $route['login'] = 'client/C_login/index';

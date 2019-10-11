@@ -9,14 +9,14 @@ class C_User extends CI_Controller
 	{
 		parent::__construct();
 		//Do your magic here
-		$this->API = "http://localhost/rbkk";
+		$this->API = "http://localhost/rbkk/api";
 		$this->load->library('form_validation');
 	}
 
 
 	public function index()
 	{
-		$data['users'] = json_decode($this->curl->simple_get($this->API . '/a_user'));
+		$data['users'] = json_decode($this->curl->simple_get($this->API . '/user'));
 
 		$data['title'] = 'User';
 		$this->load->view('Template/Head', $data);
@@ -46,7 +46,7 @@ class C_User extends CI_Controller
 		);
 		// echo ("<pre>");
 		// print_r($data);
-		$insert = $this->curl->simple_post($this->API . '/a_user/store', $data, array(CURLOPT_BUFFERSIZE => 10));
+		$insert = $this->curl->simple_post($this->API . '/user/store', $data, array(CURLOPT_BUFFERSIZE => 10));
 		if ($insert) {
 			# code...
 			$this->session->set_flashdata('hasil', 'Insert Data Berhasil');
@@ -55,16 +55,16 @@ class C_User extends CI_Controller
 			$this->session->set_flashdata('hasil', 'Insert Data gagal');
 		}
 
-		redirect('user/akun');
+		redirect('client/c_user');
 	}
 
-	public function edit()
+	public function edit($id)
 	{
 		# code...
-		// if (empty()) {
+		if (empty($id)) {
 			# code...
-			// echo "eror";
-		// } else {
+			echo "eror";
+		} else {
 			# code...
 			$data['title'] = 'Edit';
 			$this->load->view('Template/Head', $data);
@@ -73,7 +73,7 @@ class C_User extends CI_Controller
 			$this->load->view('User/Edit');
 			$this->load->view('Template/Footer');
 			$this->load->view('Template/Js');
-		// }
+		}
 	}
 
 	public function update()
@@ -100,7 +100,7 @@ class C_User extends CI_Controller
 			# code...
 			$this->session->set_flashdata('hasil', 'Update data gagal');
 		}
-		redirect('user/akun');
+		redirect('client/c_user');
 	}
 
 	public function destroy($id)
@@ -108,7 +108,7 @@ class C_User extends CI_Controller
 		# code...
 		if (empty($id)) {
 			# code...
-			redirect('user/akun');
+			redirect('client/c_user');
 		} else {
 			# code...
 			$delete = $this->curl->simple_delete($this->API . '/a_user/destroy', array('id_user' => $id), array(CURLOPT_BUFFERSIZE => 10));
@@ -120,7 +120,7 @@ class C_User extends CI_Controller
 				$this->session->set_flashdata('hasil', 'Delete Data Gagal');
 			}
 		}
-		redirect('user/akun');
+		redirect('client/c_user');
 	}
 }
 

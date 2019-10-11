@@ -79,6 +79,9 @@
         <!-- Custom Theme Scripts -->
         <script src="<?php echo base_url(); ?>assets/build/js/custom.min.js"></script>
 
+        <!-- Sweetalert2 -->
+        <script src="<?php echo base_url(); ?>assets/sweetalert2/dist/sweetalert2.min.js"></script>
+
         </body>
 
         </html>
