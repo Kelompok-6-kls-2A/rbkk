@@ -1,5 +1,6 @@
 <!-- page content -->
 <div class="right_col" role="main">
+	<?php echo $this->session->flashdata('hasil'); ?>
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
@@ -37,29 +38,65 @@
 										<h4 class="modal-title" id="myModalLabel">Tambah user</h4>
 									</div>
 									<div class="modal-body">
-										<form id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+										<form method="POST" action="<?= base_url() ?>user/store" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 
 											<div class="form-group">
-												<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">First Name <span class="required">*</span>
+												<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nama <span class="required">*</span>
 												</label>
 												<div class="col-md-6 col-sm-6 col-xs-12">
-													<input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+													<input type="text" id="nama_user" name="nama_user" required="required" class="form-control col-md-7 col-xs-12">
 												</div>
 											</div>
 											<div class="form-group">
-												<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Last Name <span class="required">*</span>
+												<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Alamat <span class="required">*</span>
 												</label>
 												<div class="col-md-6 col-sm-6 col-xs-12">
-													<input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+													<input type="text" id="alamat_user" name="alamat_user" required="required" class="form-control col-md-7 col-xs-12">
 												</div>
 											</div>
 											<div class="form-group">
-												<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Middle Name / Initial</label>
+												<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Tempat Lahir</label>
 												<div class="col-md-6 col-sm-6 col-xs-12">
-													<input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
+													<input id="tempattl_user" class="form-control col-md-7 col-xs-12" type="text" name="tempattl_user">
 												</div>
 											</div>
 											<div class="form-group">
+												<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Tanggal Lahir</label>
+												<div class="col-md-6 col-sm-6 col-xs-12">
+													<input id="tl_user" class="form-control col-md-7 col-xs-12" type="date" name="tl_user">
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Email</label>
+												<div class="col-md-6 col-sm-6 col-xs-12">
+													<input id="email" class="form-control col-md-7 col-xs-12" type="text" name="email">
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Password</label>
+												<div class="col-md-6 col-sm-6 col-xs-12">
+													<input id="password" class="form-control col-md-7 col-xs-12" type="text" name="password">
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">no_hp</label>
+												<div class="col-md-6 col-sm-6 col-xs-12">
+													<input id="no_hp" class="form-control col-md-7 col-xs-12" type="text" name="no_hp">
+												</div>
+											</div>
+											<div class="form-group">
+												<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">foto_profil</label>
+												<div class="col-md-6 col-sm-6 col-xs-12">
+													<input id="foto_profil" class="form-control col-md-7 col-xs-12" type="text" name="foto_profil">
+												</div>
+											</div>
+											<div class="form-group">
+												<!-- <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Tempat Lahir</label> -->
+												<div class="col-md-6 col-sm-6 col-xs-12">
+													<input id="idlvl" class="form-control col-md-7 col-xs-12" type="hidden" name="idlvl" value="1">
+												</div>
+											</div>
+											<!-- <div class="form-group">
 												<label class="control-label col-md-3 col-sm-3 col-xs-12">Gender</label>
 												<div class="col-md-6 col-sm-6 col-xs-12">
 													<div id="gender" class="btn-group" data-toggle="buttons">
@@ -71,19 +108,18 @@
 														</label>
 													</div>
 												</div>
-											</div>
-											<div class="form-group">
+											</div> -->
+											<!-- <div class="form-group">
 												<label class="control-label col-md-3 col-sm-3 col-xs-12">Date Of Birth <span class="required">*</span>
 												</label>
 												<div class="col-md-6 col-sm-6 col-xs-12">
 													<input id="birthday" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
 												</div>
-											</div>
-
+											</div> -->
 											<div class="modal-footer">
 												<button type="reset" class="btn btn-default" data-dismiss="modal">Cancel</button>
 												<button class="btn btn-primary" type="reset">Reset</button>
-												<button type="button" class="btn btn-success">Submit</button>
+												<button type="submit" class="btn btn-success">Submit</button>
 											</div>
 											<!-- <div class="form-group">
 												<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
@@ -128,7 +164,10 @@
 									<td><?= $value->email ?></td>
 									<td><?= $value->no_hp ?></td>
 									<td><?= $value->kategori_user ?></td>
-									<td><a href="" class="btn btn-primary"><span class="fa fa-edit"></span> edit</a><a href="" class="btn btn-danger"><span class="fa fa-trash"></span> hapus</a></td>
+									<td>
+									<a href="" class="btn btn-primary"><span class="fa fa-edit"></span> edit</a>
+									
+									<a href="<?= base_url() ?>user/destroy/<?= $value->id_user ?>" class="btn btn-danger"><span class="fa fa-trash"></span> hapus</a></td>
 								</tr>
 							<?php endforeach; ?>
 						</tbody>

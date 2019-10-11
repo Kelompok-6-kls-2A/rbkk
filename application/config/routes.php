@@ -58,8 +58,16 @@ $route['a_user/update'] = 'api/user/update';
 $route['a_user/destroy'] = 'api/user/destroy';
 
 //Rest Client
-$route['user/akun'] = 'client/C_user/index';
 
+//Dashboard
+$route['user/Dashboard'] = 'client/C_Dashboard/index';
+
+//User
+$route['user/akun'] = 'client/C_user/index';
+$route['user/store'] = 'client/C_user/store';
+$route['user/edit'] = 'client/C_user/edit';
+$route['user/update'] = 'client/C_user/update';
+$route['user/destroy/(:any)'] = 'client/C_user/destroy/$1';
 
 //Login
 $route['login'] = 'client/C_login/index';
