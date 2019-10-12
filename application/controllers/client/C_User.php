@@ -61,7 +61,7 @@ class C_User extends CI_Controller
 	public function edit($id)
 	{
 		# code...
-		$data = $this->curl->simple_get($this->API . '/a_user/show', array('id_user' => $id), array(CURLOPT_BUFFERSIZE => 10));
+		$data['r'] = json_decode($this->curl->simple_get($this->API . '/a_user/show?id_user='.$id));
 		$data['title'] = 'Edit';
 		$this->load->view('Template/Head', $data);
 		$this->load->view('Template/Sidebar');

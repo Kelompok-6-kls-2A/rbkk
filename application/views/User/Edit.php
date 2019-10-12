@@ -1,6 +1,5 @@
 <!-- page content -->
 <div class="right_col" role="main">
-
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">
@@ -26,63 +25,66 @@
 				<div class="x_content">
 					<br />
 					<form method="POST" action="<?= base_url() ?>client/c_user/update" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
-						<div class="form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nama <span class="required">*</span>
-							</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input type="text" id="nama_user" name="nama_user" required="required" class="form-control col-md-7 col-xs-12">
+						<?php  
+							var_dump($r);?>
+							<div class="form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nama <span class="required">*</span>
+								</label>
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<input type="text" id="nama_user" name="nama_user" required="required" value="" class="form-control col-md-7 col-xs-12">
+								</div>
 							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Alamat <span class="required">*</span>
-							</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input type="text" id="alamat_user" name="alamat_user" required="required" class="form-control col-md-7 col-xs-12">
+							<div class="form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Alamat <span class="required">*</span>
+								</label>
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<input type="text" id="alamat_user" name="alamat_user" required="required" class="form-control col-md-7 col-xs-12">
+								</div>
 							</div>
-						</div>
-						<div class="form-group">
-							<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Tempat Lahir</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="tempattl_user" class="form-control col-md-7 col-xs-12" type="text" name="tempattl_user">
+							<div class="form-group">
+								<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Tempat Lahir</label>
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<input id="tempattl_user" class="form-control col-md-7 col-xs-12" type="text" name="tempattl_user">
+								</div>
 							</div>
-						</div>
-						<div class="form-group">
-							<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Tanggal Lahir</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="tl_user" class="form-control col-md-7 col-xs-12" type="date" name="tl_user">
+							<div class="form-group">
+								<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Tanggal Lahir</label>
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<input id="tl_user" class="form-control col-md-7 col-xs-12" type="date" name="tl_user">
+								</div>
 							</div>
-						</div>
-						<div class="form-group">
-							<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Email</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="email" class="form-control col-md-7 col-xs-12" type="text" name="email">
+							<div class="form-group">
+								<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Email</label>
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<input id="email" class="form-control col-md-7 col-xs-12" type="text" name="email">
+								</div>
 							</div>
-						</div>
-						<div class="form-group">
-							<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Password</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="password" class="form-control col-md-7 col-xs-12" type="text" name="password">
+							<div class="form-group">
+								<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Password</label>
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<input id="password" class="form-control col-md-7 col-xs-12" type="text" name="password">
+								</div>
 							</div>
-						</div>
-						<div class="form-group">
-							<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">no_hp</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="no_hp" class="form-control col-md-7 col-xs-12" type="text" name="no_hp">
+							<div class="form-group">
+								<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">no_hp</label>
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<input id="no_hp" class="form-control col-md-7 col-xs-12" type="text" name="no_hp">
+								</div>
 							</div>
-						</div>
-						<div class="form-group">
-							<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">foto_profil</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="foto_profil" class="form-control col-md-7 col-xs-12" type="text" name="foto_profil">
+							<div class="form-group">
+								<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">foto_profil</label>
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<input id="foto_profil" class="form-control col-md-7 col-xs-12" type="text" name="foto_profil">
+								</div>
 							</div>
-						</div>
-						<div class="form-group">
-							<!-- <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Tempat Lahir</label> -->
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="idlvl" class="form-control col-md-7 col-xs-12" type="hidden" name="idlvl" value="1">
+							<div class="form-group">
+								<!-- <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Tempat Lahir</label> -->
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<input id="idlvl" class="form-control col-md-7 col-xs-12" type="hidden" name="idlvl" value="1">
+								</div>
 							</div>
-						</div>
-						<div class="ln_solid"></div>
+							<div class="ln_solid"></div>
+						
 						<div class="form-group">
 							<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
 								<button class="btn btn-primary" type="button">Cancel</button>
