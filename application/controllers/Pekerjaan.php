@@ -27,7 +27,7 @@ class Pekerjaan extends CI_Controller
 		$this->load->view('Template/Js');
 	}
 
-	public function store()
+	public function store() //dinda
 	{
 		# code...
 		$insert = $this->user->insert();
@@ -55,7 +55,7 @@ class Pekerjaan extends CI_Controller
 		$this->load->view('Template/Js');
 	}
 
-	public function update()
+	public function update() //untuk ngirim datanya
 	{
 		# code...
 		$insert = $this->user->update();
@@ -70,7 +70,7 @@ class Pekerjaan extends CI_Controller
 		redirect('user');
 	}
 
-	public function destroy($id)
+	public function destroy($id) //firdia. untuk menghapus data
 	{
 		# code...
 		if (empty($id)) {
