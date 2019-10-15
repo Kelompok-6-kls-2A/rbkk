@@ -49,5 +49,5 @@
 	<link href="<?php echo base_url(); ?>assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
 
 	<!-- Sweetalert2 -->
-	<link rel="stylesheet" href="<?php echo base_url();?>assets/sweetalert2/dist/sweetalert2.min.css">
+	<!-- <link rel="stylesheet" href="<?php echo base_url();?>assets/sweetalert2/dist/sweetalert2.min.css"> -->
 </head>

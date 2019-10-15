@@ -36,13 +36,6 @@ class User extends REST_Controller
 		], REST_Controller::HTTP_OK);
 	}
 
-	// public function show_get()
-	// {
-	// 	// Get Method 
-	// 	$id = $this->get('id_user');
-	// 	return $this->response($this->M_user->getById($id));
-	// }
-
 	public function store_post()
 	{
 		$data = $this->security->xss_clean($_POST);

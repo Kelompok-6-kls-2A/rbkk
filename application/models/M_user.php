@@ -15,6 +15,7 @@ class M_user extends CI_Model
 				->FROM($this->_table)
 				->JOIN('lvluser', 'lvluser.id_lvl = tb_user.idlvl');
 			$query = $this->db->get()->result_array();
+			return $query;
 		} else {
 			# code...
 			$this->db->SELECT('*')
@@ -22,8 +23,8 @@ class M_user extends CI_Model
 				->JOIN('lvluser', 'lvluser.id_lvl = tb_user.idlvl')
 				->WHERE('id_user', $id);
 			$query = $this->db->get()->result_arrray();
+			return $query;
 		}
-		return $query;
 	}
 
 
@@ -46,7 +47,6 @@ class M_user extends CI_Model
 		# code...
 		$this->db->delete($this->_table, ['id_user' => $id]);
 		return $this->db->affected_rows();
-		
 	}
 }
 

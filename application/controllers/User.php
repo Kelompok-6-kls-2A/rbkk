@@ -33,10 +33,10 @@ class User extends CI_Controller
 		$insert = $this->user->insert();
 		if ($insert) {
 			# code...
-			$this->session->set_flashdata('hasil', 'Insert Data Berhasil');
+			$this->session->set_flashdata('flash', 'ditambahkan');
 		} else {
 			# code...
-			$this->session->set_flashdata('hasil', 'Insert Data gagal');
+			$this->session->set_flashdata('flash', 'ditambahkan');
 		}
 
 		redirect('user');
@@ -45,8 +45,6 @@ class User extends CI_Controller
 	public function edit($id)
 	{
 		# code...
-		// $data['r'] = json_decode($this->curl->simple_get($this->API . '/user/show?id_user=' . $id));
-
 		$data['r'] = $this->user->getById($id);
 		$data['title'] = 'Edit';
 		$this->load->view('Template/Head', $data);
@@ -63,10 +61,10 @@ class User extends CI_Controller
 		$insert = $this->user->update();
 		if ($insert) {
 			# code...
-			$this->session->set_flashdata('hasil', 'update Data Berhasil');
+			$this->session->set_flashdata('flash', 'ditambahkan');
 		} else {
 			# code...
-			$this->session->set_flashdata('hasil', 'update Data gagal');
+			$this->session->set_flashdata('flash', 'ditambahkan');
 		}
 
 		redirect('user');
