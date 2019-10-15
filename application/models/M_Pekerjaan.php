@@ -6,6 +6,7 @@ class M_pekerjaan extends CI_Model
 	private $_table = "tb_pekerjaan";
 
 	public function getAll($id = null) 
+
 	{
 		# code...
 		if ($id === null) {
@@ -21,7 +22,7 @@ class M_pekerjaan extends CI_Model
 				->FROM($this->_table)
 				->JOIN('tb_user', 'tb_user.id_user = tb_pekerjaan.id_user')
 				->WHERE('id_pekerjaan', $id);
-			$query = $this->db->get()->result_array();
+			$query = $this->db->get()->result_array(); //untuk ambil data. dibrowser aja rbkk/api/user''
 			return $query;
 		}
 	}

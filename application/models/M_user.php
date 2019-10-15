@@ -6,7 +6,7 @@ class M_user extends CI_Model
 
 	private $_table = "tb_user";
 
-	public function getAll($id = null)
+	public function getAll($id = null)//untuk panggil data
 	{
 		# code...
 		if ($id === null) {
