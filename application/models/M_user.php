@@ -22,7 +22,7 @@ class M_user extends CI_Model
 				->FROM($this->_table)
 				->JOIN('lvluser', 'lvluser.id_lvl = tb_user.idlvl')
 				->WHERE('id_user', $id);
-			$query = $this->db->get()->result_arrray();
+			$query = $this->db->get()->result_array();
 			return $query;
 		}
 	}

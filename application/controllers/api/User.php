@@ -19,8 +19,7 @@ class User extends REST_Controller
 
 	public function index_get()
 	{
-		$id = $this->get('id');
-
+		$id = $this->get('id_user');
 		if ($id === null) {
 			# code...
 			$data = $this->user->getAll();
@@ -76,7 +75,7 @@ class User extends REST_Controller
 				# code...
 				$this->set_response([
 					'status' => TRUE,
-					'data'   => $query,
+					'data'   => $data,
 					'message' => 'Field has been Created Success'
 				], REST_Controller::HTTP_CREATED);
 			} else {
