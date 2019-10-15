@@ -5,7 +5,8 @@ class M_pekerjaan extends CI_Model
 {
 	private $_table = "tb_pekerjaan";
 
-	public function getAll($id = null)//untuk panggil data
+	public function getAll($id = null) 
+
 	{
 		# code...
 		if ($id === null) {
