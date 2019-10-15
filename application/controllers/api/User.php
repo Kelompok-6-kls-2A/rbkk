@@ -1,8 +1,11 @@
 <?php
 
+use Restserver\Libraries\REST_Controller;
+
 defined('BASEPATH') or exit('No direct script access allowed');
 
-require(APPPATH . 'libraries/REST_Controller.php');
+require APPPATH . 'libraries/REST_Controller.php';
+require APPPATH . 'libraries/Format.php';
 
 class User extends REST_Controller
 {
@@ -10,21 +13,35 @@ class User extends REST_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('M_user');
+		$this->load->model('M_user', 'user');
 		$this->load->library('form_validation');
 	}
 
 	public function index_get()
 	{
-		return $this->response($this->M_user->getAll());
+		$id = $this->get('id');
+
+		if ($id === null) {
+			# code...
+			$data = $this->user->getAll();
+		} else {
+			# code...
+			$data = $this->user->getAll($id);
+		}
+
+		$this->set_response([
+			'status' => TRUE,
+			'data'   => $data,
+			'message' => 'Success'
+		], REST_Controller::HTTP_OK);
 	}
 
-	public function show_get()
-	{
-		// Get Method 
-		$id = $this->get('id_user');
-		return $this->response($this->M_user->getById($id));
-	}
+	// public function show_get()
+	// {
+	// 	// Get Method 
+	// 	$id = $this->get('id_user');
+	// 	return $this->response($this->M_user->getById($id));
+	// }
 
 	public function store_post()
 	{
@@ -61,14 +78,28 @@ class User extends REST_Controller
 				"idlvl"				=> $this->post('idlvl'),
 			);
 
-			return $this->response($this->M_user->insert($data));
+			$query = $this->user->insert($data);
+			if ($query > 0) {
+				# code...
+				$this->set_response([
+					'status' => TRUE,
+					'data'   => $query,
+					'message' => 'Field has been Created Success'
+				], REST_Controller::HTTP_CREATED);
+			} else {
+				# code...
+				$this->set_response([
+					'status' => FALSE,
+					'message' => 'Not Acceptable'
+				], REST_Controller::HTTP_NOT_ACCEPTABLE);
+			}
 		}
 	}
 
 	public function update_put()
 	{
+		$id = $this->put('id_user');
 		$data = array(
-			"id_user"			=> $this->put('id_user'),
 			"nama_user"			=> $this->put('nama_user'),
 			"alamat_user"		=> $this->put('alamat_user'),
 			"tempattl_user"		=> $this->put('tempattl_user'),
@@ -79,12 +110,51 @@ class User extends REST_Controller
 			"foto_profil"		=> $this->put('foto_profil'),
 			"idlvl"				=> $this->put('idlvl'),
 		);
-		return $this->response($this->M_user->update($data, $this->put('id_user')));
+
+		$query = $this->user->update($data, $id);
+		if ($query > 0) {
+			# code...
+			$this->set_response([
+				'status' => TRUE,
+				'data'   =>  $query,
+				'message' => 'field has been updated Success'
+			], REST_Controller::HTTP_OK);
+		} else {
+			# code...
+			$this->set_response([
+				'status' => FALSE,
+				'message' => 'Not Acceptable'
+			], REST_Controller::HTTP_NOT_ACCEPTABLE);
+		}
 	}
 
 	public function destroy_delete()
 	{
-		return $this->response($this->M_user->delete($this->delete('id_user')));
+		$id = $this->delete('id_user');
+		if ($id === null) {
+			# code...
+			$this->set_response([
+				'status' => FALSE,
+				'message' => 'Not Acceptable'
+			], REST_Controller::HTTP_BAD_REQUEST);
+		} else {
+			# code...
+			$query = $this->user->delete($id);
+			if ($query > 0) {
+				# code...
+				$this->set_response([
+					'status' => TRUE,
+					'data'   => $query,
+					'message' => 'Success'
+				], REST_Controller::HTTP_OK);
+			} else {
+				# code...
+				$this->set_response([
+					'status' => FALSE,
+					'message' => 'Not Acceptable'
+				], REST_Controller::HTTP_NOT_ACCEPTABLE);
+			}
+		}
 	}
 }
 /** End of file User.php **/

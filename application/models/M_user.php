@@ -6,132 +6,47 @@ class M_user extends CI_Model
 
 	private $_table = "tb_user";
 
-	public function empty_Response()
+	public function getAll($id = null)
 	{
 		# code...
-		$response['status'] = 502;
-		$response['error'] = true;
-		$response['message'] = 'Field tidak boleh ada yang kosong';
-
-		return $response;
-	}
-
-	public function getAll()
-	{
-		# code...
-		$this->db->SELECT('*')
-			->FROM($this->_table)
-			->JOIN('lvluser', 'lvluser.id_lvl = tb_user.idlvl');
-		$query = $this->db->get()->result();
-
-		$response['status'] = 200;
-		$response['error'] = false;
-		$response['person'] = $query;
-
-		return $response;
-	}
-
-	public function getById($id)
-	{
-		# code...
-		if (empty($id)) {
+		if ($id === null) {
 			# code...
-			$response['status'] = 502;
-			$response['error'] = true;
-			$response['message'] = "Data tidak ditemukan";
-			return $response;
+			$this->db->SELECT('*')
+				->FROM($this->_table)
+				->JOIN('lvluser', 'lvluser.id_lvl = tb_user.idlvl');
+			$query = $this->db->get()->result_array();
 		} else {
 			# code...
 			$this->db->SELECT('*')
 				->FROM($this->_table)
 				->JOIN('lvluser', 'lvluser.id_lvl = tb_user.idlvl')
 				->WHERE('id_user', $id);
-
-			$query = $this->db->get()->result();
-
-			$response['status'] = 200;
-			$response['error'] = false;
-			$response['person'] = $query;
-
-			return $response;
+			$query = $this->db->get()->result_arrray();
 		}
+		return $query;
 	}
+
 
 	public function insert($data)
 	{
 		# code...
-		if (!empty($data)) {
-			# code...
-			$query = $this->db->insert($this->_table, $data);
-			if ($query) {
-				# code...
-				$response['status'] = 200;
-				$response['error'] = false;
-				$response['message'] = 'Data berhasil ditambahkan';
-				return $response;
-			} else {
-				# code...
-				$response['status'] = 502;
-				$response['error'] = false;
-				$response['message'] = 'Data gagal ditambahkan';
-				return $response;
-			}
-		} else {
-			# code...
-			return $this->empty_Response();
-		}
+		$this->db->insert($this->_table, $data);
+		return $this->db->affected_rows();
 	}
 
 	public function update($data, $id)
 	{
 		# code...
-		if (!empty($data) || $id == '') {
-			# code...
-			$this->db->where('id_user', $id);
-			$query = $this->db->update($this->_table, $data);
-			if ($query) {
-				# code...
-				$response['status'] = 200;
-				$response['error'] = false;
-				$response['message'] = 'Data berhasil diubah';
-				return $response;
-			} else {
-				# code...
-				$response['status'] = 502;
-				$response['error'] = false;
-				$response['message'] = 'Data gagal diubah';
-				return $response;
-			}
-		} else {
-			# code...
-			return $this->empty_Response();
-		}
+		$this->db->update($this->_table, $data, ['id_user' => $id]);
+		return $this->db->affected_rows();
 	}
 
 	public function delete($id)
 	{
 		# code...
-		if ($id == '') {
-			# code...
-			return $this->empty_Response();
-		} else {
-			# code...
-			$this->db->where('id_user', $id);
-			$query = $this->db->delete($this->_table);
-			if ($query) {
-				# code...
-				$response['status'] = 200;
-				$response['error'] = false;
-				$response['message'] = 'Data berhasil delete';
-				return $response;
-			} else {
-				# code...
-				$response['status'] = 502;
-				$response['error'] = false;
-				$response['message'] = 'Data gagal delete';
-				return $response;
-			}
-		}
+		$this->db->delete($this->_table, ['id_user' => $id]);
+		return $this->db->affected_rows();
+		
 	}
 }
 

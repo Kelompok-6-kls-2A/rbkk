@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') or exit('No direct script access allowed');
+defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -11,7 +11,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | and its corresponding controller class/method. The segments in a
 | URL normally follow this pattern:
 |
-|	example.com/class/method/id/
+| example.com/class/method/id/
 |
 | In some instances, however, you may want to remap this relationship
 | so that a different class/function is called than the one
@@ -19,7 +19,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |
 | Please see the user guide for complete details:
 |
-|	https://codeigniter.com/user_guide/general/routing.html
+| https://codeigniter.com/user_guide/general/routing.html
 |
 | -------------------------------------------------------------------------
 | RESERVED ROUTES
@@ -27,18 +27,18 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |
 | There are three reserved routes:
 |
-|	$route['default_controller'] = 'welcome';
+| $route['default_controller'] = 'welcome';
 |
 | This route indicates which controller class should be loaded if the
 | URI contains no data. In the above example, the "welcome" class
 | would be loaded.
 |
-|	$route['404_override'] = 'errors/page_missing';
+| $route['404_override'] = 'errors/page_missing';
 |
 | This route will tell the Router which controller/method to use if those
 | provided in the URL cannot be matched to a valid route.
 |
-|	$route['translate_uri_dashes'] = FALSE;
+| $route['translate_uri_dashes'] = FALSE;
 |
 | This is not exactly a route, but allows you to automatically route
 | controller and method names that contain dashes. '-' isn't a valid
@@ -46,33 +46,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
 | When you set this option to TRUE, it will replace ALL dashes in the
 | controller and method URI segments.
 |
-| Examples:	my-controller/index	-> my_controller/index
-|		my-controller/my-method	-> my_controller/my_method
+| Examples: my-controller/index -> my_controller/index
+|   my-controller/my-method -> my_controller/my_method
 */
-
-// Rest API_Backend user
-// $route['a_user'] = 'api/dashboard/index';
-// $route['a_user'] = 'api/user/index';
-// $route['a_user/store'] = 'api/user/store';
-// $route['a_user/show/(:any)'] = 'api/user/show';
-// $route['a_user/update'] = 'api/user/update';
-// $route['a_user/destroy'] = 'api/user/destroy';
-
-//Rest Client
-
-//Dashboard
-// $route['user/Dashboard'] = 'client/C_Dashboard/index';
-
-//User
-// $route['user/akun'] = 'client/C_user/index';
-// $route['user/store'] = 'client/C_user/store';
-// $route['user/edit'] = 'client/C_user/edit';
-// $route['user/update'] = 'client/C_user/update';
-// $route['user/destroy/(:any)'] = 'client/C_user/destroy/$1';
-
-//Login
-$route['login'] = 'client/C_login/index';
-
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
-$route['translate_uri_dashes'] = FALSE;
+$route['translate_uri_dashes'] = TRUE;
+
+/*
+| -------------------------------------------------------------------------
+| Sample REST API Routes
+| -------------------------------------------------------------------------
+*/
+$route['api/example/users/(:num)'] = 'api/example/users/id/$1'; // Example 4
+$route['api/example/users/(:num)(\.)([a-zA-Z0-9_-]+)(.*)'] = 'api/example/users/id/$1/format/$3$4'; // Example 8

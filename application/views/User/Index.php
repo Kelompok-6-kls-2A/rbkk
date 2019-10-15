@@ -38,7 +38,7 @@
 										<h4 class="modal-title" id="myModalLabel">Tambah user</h4>
 									</div>
 									<div class="modal-body">
-										<form method="POST" action="<?= base_url() ?>client/c_user/store" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+										<form method="POST" action="<?= base_url() ?>user/store" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 
 											<div class="form-group">
 												<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nama <span class="required">*</span>
@@ -153,21 +153,21 @@
 							</tr>
 						</thead>
 						<tbody>
-							<?php foreach ($users->person as $key => $value) : ?>
+							<?php foreach ($users as $key => $value) : ?>
 								<tr>
 									<td><?= ($key + 1) ?></td>
-									<td><?= $value->foto_profil ?></td>
-									<td><?= $value->nama_user ?></td>
-									<td><?= $value->alamat_user ?></td>
-									<td><?= $value->tempattl_user ?>,
-										<?= $value->tl_user ?></td>
-									<td><?= $value->email ?></td>
-									<td><?= $value->no_hp ?></td>
-									<td><?= $value->kategori_user ?></td>
+									<td><?= $value['foto_profil'] ?></td>
+									<td><?= $value['nama_user'] ?></td>
+									<td><?= $value['alamat_user'] ?></td>
+									<td><?= $value['tempattl_user'] ?>,
+										<?= $value['tl_user'] ?></td>
+									<td><?= $value['email'] ?></td>
+									<td><?= $value['no_hp'] ?></td>
+									<td><?= $value['kategori_user'] ?></td>
 									<td>
-										<a href="<?= base_url() ?>client/c_user/edit/<?= $value->id_user ?>" class="btn btn-primary"><span class="fa fa-edit"></span> edit</a>
+										<a href="<?= base_url() ?>user/edit/<?= $value['id_user'] ?>" class="btn btn-primary"><span class="fa fa-edit"></span> edit</a>
 
-										<a href="<?= base_url() ?>client/c_user/destroy/<?= $value->id_user ?>" class="btn btn-danger"><span class="fa fa-trash"></span> hapus</a></td>
+										<a href="<?= base_url() ?>user/destroy/<?= $value['id_user'] ?>" class="btn btn-danger"><span class="fa fa-trash"></span> hapus</a></td>
 								</tr>
 							<?php endforeach; ?>
 						</tbody>
