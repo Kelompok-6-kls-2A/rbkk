@@ -15,7 +15,7 @@ class Berkas extends REST_Controller
 	{
 		parent::__construct();
 		//Do your magic here
-		$this->load->model('M_berkas', 'berkas');
+		$this->load->model('api/M_berkas', 'berkas');
 		$this->load->library('form_validation');
 	}
 
