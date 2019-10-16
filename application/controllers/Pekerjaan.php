@@ -45,12 +45,12 @@ class Pekerjaan extends CI_Controller
 	public function edit($id)
 	{
 		# code...
-		$data['r'] = $this->user->getById($id);
+		$data['r'] = $this->pekerjaan->getById($id);
 		$data['title'] = 'Edit';
 		$this->load->view('Template/Head', $data);
 		$this->load->view('Template/Sidebar');
 		$this->load->view('Template/Topnavbar');
-		$this->load->view('User/Edit');
+		$this->load->view('Pekerjaan/Edit');
 		$this->load->view('Template/Footer');
 		$this->load->view('Template/Js');
 	}
@@ -58,7 +58,7 @@ class Pekerjaan extends CI_Controller
 	public function update() //untuk ngirim datanya
 	{
 		# code...
-		$insert = $this->user->update();
+		$insert = $this->pekerjaan->update();
 		if ($insert) {
 			# code...
 			$this->session->set_flashdata('flash', 'ditambahkan');
@@ -67,7 +67,7 @@ class Pekerjaan extends CI_Controller
 			$this->session->set_flashdata('flash', 'ditambahkan');
 		}
 
-		redirect('user');
+		redirect('pekerjaan');
 	}
 
 	public function destroy($id) //firdia. untuk menghapus data
