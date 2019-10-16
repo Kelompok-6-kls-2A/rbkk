@@ -13,7 +13,7 @@ class User extends REST_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('M_user', 'user');
+		$this->load->model('api/M_user', 'user');
 		$this->load->library('form_validation');
 	}
 

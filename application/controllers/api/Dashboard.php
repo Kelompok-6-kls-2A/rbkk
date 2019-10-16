@@ -8,7 +8,7 @@ class Dashboard extends REST_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('M_dashboard');
+		$this->load->model('api/M_dashboard');
 	}
 
 	//ambil semua data
@@ -19,8 +19,9 @@ class Dashboard extends REST_Controller
 	}
 
 	//ambil data berdasarkan parameter
-	public function show_get() {
-		 # code...
+	public function show_get()
+	{
+		# code...
 	}
 
 	//input data
@@ -37,7 +38,7 @@ class Dashboard extends REST_Controller
 
 	//delete data
 	public function destroy_delete()
-	{ 
+	{
 		# code...
 	}
 }

@@ -13,7 +13,7 @@ class Pekerjaan extends REST_Controller
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model('M_Pekerjaan', 'pekerjaan');
+		$this->load->model('api/M_Pekerjaan', 'pekerjaan');
 		$this->load->library('form_validation');
 	}
 
