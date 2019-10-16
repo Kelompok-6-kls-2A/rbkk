@@ -135,9 +135,9 @@
 									<td><?= $value['jam_kerja'] ?></td>
 								
 									<td>
-										<a href="<?= base_url() ?>user/edit/<?= $value['id_user'] ?>" class="btn btn-primary"><span class="fa fa-edit"></span> edit</a>
+										<a href="<?= base_url() ?>pekerjaan/edit/<?= $value['id_pekerjaan'] ?>" class="btn btn-primary"><span class="fa fa-edit"></span> edit</a>
 
-										<a href="<?= base_url() ?>user/destroy/<?= $value['id_user'] ?>" class="btn btn-danger"><span class="fa fa-trash"></span> hapus</a></td>
+										<a href="<?= base_url() ?>pekerjaan/destroy/<?= $value['id_pekerjaan'] ?>" class="btn btn-danger"><span class="fa fa-trash"></span> hapus</a></td>
 								</tr>
 							<?php endforeach; ?>
 						</tbody>
