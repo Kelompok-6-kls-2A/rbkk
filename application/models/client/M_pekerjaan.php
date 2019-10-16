@@ -21,7 +21,7 @@ class M_pekerjaan extends CI_Model
 	public function getAll()
 	{
 		# code...
-		$response = $this->_client->request('GET', 'user'); //untuk memanggil data
+		$response = $this->_client->request('GET', 'pekerjaan'); //untuk memanggil data
 
 		$result = json_decode($response->getBody()->getContents(), true);
 		return $result['data'];
@@ -30,7 +30,7 @@ class M_pekerjaan extends CI_Model
 	public function getByID($id)
 	{
 		# code...
-		$response = $this->_client->request('GET', 'user', [
+		$response = $this->_client->request('GET', 'pekerjaan', [
 			'query' 		=> [
 				'id_user'	=> $id
 			]
