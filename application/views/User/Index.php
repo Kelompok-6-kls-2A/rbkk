@@ -1,6 +1,6 @@
 <!-- page content -->
 <div class="right_col" role="main">
-	<div class="flash-data" flash-data="<?= $this->session->flashdata('flash') ?>"></div>
+	<div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash') ?>"></div>
 	<div class="row">
 		<div class="col-md-12 col-sm-12 col-xs-12">
 			<div class="x_panel">

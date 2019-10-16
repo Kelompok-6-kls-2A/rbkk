@@ -1,4 +1,4 @@
-const flashData = $('.flash-data').data('flash');
+const flashData = $('.flash-data').data('flashdata');
 
 if (flashData) {
 	Swal.fire({
