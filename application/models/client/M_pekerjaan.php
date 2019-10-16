@@ -21,7 +21,7 @@ class M_pekerjaan extends CI_Model
 	public function getAll()
 	{
 		# code...
-		$response = $this->_client->request('GET', 'user'); //untuk memanggil data
+		$response = $this->_client->request('GET', 'pekerjaan'); //untuk memanggil data
 
 		$result = json_decode($response->getBody()->getContents(), true);
 		return $result['data'];
@@ -30,7 +30,7 @@ class M_pekerjaan extends CI_Model
 	public function getByID($id)
 	{
 		# code...
-		$response = $this->_client->request('GET', 'user', [
+		$response = $this->_client->request('GET', 'pekerjaan', [
 			'query' 		=> [
 				'id_user'	=> $id
 			]
@@ -47,18 +47,16 @@ class M_pekerjaan extends CI_Model
 		$_POST = $this->input->post();
 
 		$data = array(
-			"nama_user" 			=> $_POST['nama_user'],
-			"alamat_user"			=> $_POST['alamat_user'],
-			"tempattl_user"			=> $_POST['tempattl_user'],
-			"tl_user"				=> $_POST['tl_user'],
-			"email"					=> $_POST['email'],
-			"password"				=> $_POST['password'],
-			"no_hp"					=> $_POST['no_hp'],
-			"foto_profil"			=> $_POST['foto_profil'],
-			"idlvl"					=> $_POST['idlvl']
+			"id_user" 			   	 	=> $_POST['id_user'],
+			"nama_kategori_pekerjaan"	=> $_POST['nama_kategori_pekerjaan'],
+			"deskripsi"					=> $_POST['deskripsi'],
+			"gaji"						=> $_POST['gaji'],
+			"lokasi"					=> $_POST['lokasi'],
+			"jam_kerja"					=> $_POST['jam_kerja'],
+			"idlvl"						=> $_POST['idlvl']
 		);
 
-		$response = $this->_client->request('POST', 'user/store', [
+		$response = $this->_client->request('POST', 'pekerjaan/store', [
 			'form_params'			=> $data
 		]);
 
@@ -72,19 +70,17 @@ class M_pekerjaan extends CI_Model
 		$_POST = $this->input->post();
 
 		$data = array(
-			"nama_user" 			=> $_POST['nama_user'],
-			"alamat_user"			=> $_POST['alamat_user'],
-			"tempattl_user"			=> $_POST['tempattl_user'],
-			"tl_user"				=> $_POST['tl_user'],
-			"email"					=> $_POST['email'],
-			"password"				=> $_POST['password'],
-			"no_hp"					=> $_POST['no_hp'],
-			"foto_profil"			=> $_POST['foto_profil'],
+			"id_user" 			   	 	=> $_POST['id_user'],
+			"nama_kategori_pekerjaan"	=> $_POST['nama_kategori_pekerjaan'],
+			"deskripsi"					=> $_POST['deskripsi'],
+			"gaji"						=> $_POST['gaji'],
+			"lokasi"					=> $_POST['lokasi'],
+			"jam_kerja"					=> $_POST['jam_kerja'],
 			"idlvl"					=> $_POST['idlvl'],
-			"id_user"				=> $_POST['id_user']
+			"id_pekerjaan"				=> $_POST['id_pekerjaan']
 		);
 
-		$response = $this->_client->request('PUT', 'user/update', [
+		$response = $this->_client->request('PUT', 'pekerjaan/update', [
 			'form_params'			=> $data
 		]);
 
