@@ -8,7 +8,6 @@ class User extends CI_Controller
 	{
 		parent::__construct();
 		//Do your magic here
-		// $this->API = "http://localhost/rbkk/api";
 		$this->load->model('client/M_user', 'user');
 		$this->load->library('form_validation');
 	}
@@ -16,7 +15,6 @@ class User extends CI_Controller
 
 	public function index()
 	{
-		// $data['users'] = json_decode($this->curl->simple_get($this->API . '/user'));
 		$data['users'] = $this->user->getAll();
 		$data['title'] = 'User';
 		$this->load->view('Template/Head', $data);
@@ -33,10 +31,10 @@ class User extends CI_Controller
 		$insert = $this->user->insert();
 		if ($insert) {
 			# code...
-			$this->session->set_flashdata('flash', 'ditambahkan');
+			$this->session->set_flashdata('flash', 'Created');
 		} else {
 			# code...
-			$this->session->set_flashdata('flash', 'ditambahkan');
+			$this->session->set_flashdata('flash', 'Created');
 		}
 
 		redirect('user');
@@ -61,10 +59,10 @@ class User extends CI_Controller
 		$insert = $this->user->update();
 		if ($insert) {
 			# code...
-			$this->session->set_flashdata('flash', 'ditambahkan');
+			$this->session->set_flashdata('flash', 'Updated');
 		} else {
 			# code...
-			$this->session->set_flashdata('flash', 'ditambahkan');
+			$this->session->set_flashdata('flash', 'Updated');
 		}
 
 		redirect('user');
@@ -78,14 +76,13 @@ class User extends CI_Controller
 			redirect('user');
 		} else {
 			# code...
-			// $delete = $this->curl->simple_delete($this->API . '/a_user/destroy', array('id_user' => $id), array(CURLOPT_BUFFERSIZE => 10));
 			$delete = $this->user->delete($id);
 			if ($delete) {
 				# code...
-				$this->session->set_flashdata('hasil', 'Delete Data Berhasil');
+				$this->session->set_flashdata('flash', 'Delete');
 			} else {
 				# code...
-				$this->session->set_flashdata('hasil', 'Delete Data Gagal');
+				$this->session->set_flashdata('flash', 'Delete');
 			}
 		}
 		redirect('user');
