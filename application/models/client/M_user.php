@@ -24,7 +24,7 @@ class M_user extends CI_Model
 		$response = $this->_client->request('GET', 'user');
 
 		$result = json_decode($response->getBody()->getContents(), true);
-		return $result['data'];
+		return $result['person'];
 	}
 
 	public function getByID($id)
