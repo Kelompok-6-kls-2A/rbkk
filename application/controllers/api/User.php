@@ -14,7 +14,6 @@ class User extends REST_Controller
 	{
 		parent::__construct();
 		$this->load->model('api/M_user', 'user');
-		$this->load->model('api/M_key', 'key');
 		$this->load->library('form_validation');
 	}
 

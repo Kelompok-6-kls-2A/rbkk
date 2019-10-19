@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 15, 2019 at 09:25 AM
+-- Generation Time: Oct 19, 2019 at 09:22 AM
 -- Server version: 10.2.6-MariaDB-log
 -- PHP Version: 7.3.2
 
@@ -21,6 +21,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `dbmegawe`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `keys`
+--
+
+CREATE TABLE `keys` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `key` varchar(40) NOT NULL,
+  `level` int(2) NOT NULL,
+  `ignore_limits` tinyint(1) NOT NULL DEFAULT 0,
+  `is_private_key` tinyint(1) NOT NULL DEFAULT 0,
+  `ip_addresses` text DEFAULT NULL,
+  `date_created` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `keys`
+--
+
+INSERT INTO `keys` (`id`, `user_id`, `key`, `level`, `ignore_limits`, `is_private_key`, `ip_addresses`, `date_created`) VALUES
+(1, 56, 'wpu3', 1, 0, 0, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -58,13 +82,6 @@ CREATE TABLE `tb_berkas` (
   `lainlain` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `tb_berkas`
---
-
-INSERT INTO `tb_berkas` (`id_berkas`, `id_pekerjaan`, `SKCK`, `CV`, `foto`, `foto_ktp`, `lainlain`) VALUES
-(1, 8, 'asasd', 'asdasd', 'asda', 'asd', 'asda');
-
 -- --------------------------------------------------------
 
 --
@@ -86,8 +103,7 @@ CREATE TABLE `tb_pekerjaan` (
 --
 
 INSERT INTO `tb_pekerjaan` (`id_pekerjaan`, `id_user`, `nama_kategori_pekerjaan`, `deskripsi`, `gaji`, `lokasi`, `jam_kerja`) VALUES
-(7, 28, 'art', 'lowongan', 150000, 'malang', 'partime'),
-(8, 28, 'art', 'lowongan', 150000, 'malang', 'partime');
+(15, 55, 'coba', 'asd', 10000, 'malang', 'full time');
 
 -- --------------------------------------------------------
 
@@ -104,7 +120,7 @@ CREATE TABLE `tb_user` (
   `email` varchar(50) DEFAULT NULL,
   `password` varchar(20) NOT NULL,
   `no_hp` varchar(20) NOT NULL,
-  `foto_profil` varchar(50) NOT NULL,
+  `foto_profil` varchar(50) NOT NULL DEFAULT 'default.jpg',
   `idlvl` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -113,18 +129,18 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `nama_user`, `alamat_user`, `tempattl_user`, `tl_user`, `email`, `password`, `no_hp`, `foto_profil`, `idlvl`) VALUES
-(28, 'aaaa', 'Jl. Raya Tlogomas 246, T. Informatika Universitas Muhammadiyah Malang', 'Malang', '2019-10-15', 'qodiraja23@gmail.com', 'asdasdhghj', '085234101001', 'hjghjgjhgjhg', 1),
-(29, 'Abdul Qhodir Zaelany', 'alksdjlaks', 'alksdjaslkd', '2018-11-30', 'asdasd@gmail.com', 'asdasdhghj', '085234101001', 'hjghjgjhgjhg', 1),
-(30, 'Abdul Qhodir Zaelany', 'Jl. Raya Tlogomas 246, T. Informatika Universitas Muhammadiyah Malang', 'lkjlkjlkjlkjkljlkj', '2018-10-30', 'asdasd@gmail.com', 'asdasdhghj', '085234101001', 'hjghjgjhgjhg', 1),
-(31, 'Abdul Qhodir Zaelany', 'Jl. Raya Tlogomas 246, T. Informatika Universitas Muhammadiyah Malang', 'lkjlkjlkjlkjkljlkj', '2019-12-30', 'qodiraja23@gmail.com', 'asdasdhghj', '085234101001', 'hjghjgjhgjhg', 1),
-(32, 'asdajsdnkajsndkjn', 'Jl. Raya Tlogomas 246, T. Informatika Universitas Muhammadiyah Malang', 'lkjlkjlkjlkjkljlkj', '2019-12-31', 'qodiraja23@gmail.com', 'asdasdhghj', '085234101001', 'hjghjgjhgjhg', 1),
-(33, 'jsdkfjhskdjfhskjhk', 'Jl. Raya Tlogomas 246, T. Informatika Universitas Muhammadiyah Malang', 'lkjlkjlkjlkjkljlkj', '2019-12-31', 'qodiraja23@gmail.com', 'asdasdhghj', '085234101001', 'hjghjgjhgjhg', 1),
-(34, 'jsdkfjhskdjfhskjhk', 'Jl. Raya Tlogomas 246, T. Informatika Universitas Muhammadiyah Malang', 'lkjlkjlkjlkjkljlkj', '2019-12-31', 'qodiraja23@gmail.com', 'asdasdhghj', '085234101001', 'hjghjgjhgjhg', 1),
-(35, 'Abdul Qhodir Zaelany', 'Jl. Raya Tlogomas 246, T. Informatika Universitas Muhammadiyah Malang', 'lkjlkjlkjlkjkljlkj', '2019-12-31', 'qodiraja23@gmail.com', 'asdasdhghj', '085234101001', 'hjghjgjhgjhg', 1);
+(55, 'Abdul Qhodir Zaelany', 'tirto', 'Malang', '2019-10-19', 'qodiraja23@gmail.com', '$2y$10$7NWMmJce4SNbA', '085234101001', 'default.jpg', 1),
+(56, 'Abdul Qhodir Zaelany', 'Jl. Raya Tlogomas 246, T. Informatika Universitas Muhammadiyah Malang', 'Malang', '1997-05-25', 'qodirtok@gmail.com', '$2y$10$zbd0zDry3G6Hd', '085234101001', 'default.jpg', 1);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `keys`
+--
+ALTER TABLE `keys`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `lvluser`
@@ -158,6 +174,12 @@ ALTER TABLE `tb_user`
 --
 
 --
+-- AUTO_INCREMENT for table `keys`
+--
+ALTER TABLE `keys`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `lvluser`
 --
 ALTER TABLE `lvluser`
@@ -173,13 +195,13 @@ ALTER TABLE `tb_berkas`
 -- AUTO_INCREMENT for table `tb_pekerjaan`
 --
 ALTER TABLE `tb_pekerjaan`
-  MODIFY `id_pekerjaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_pekerjaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- Constraints for dumped tables

@@ -35,7 +35,7 @@
 					<form method="POST" action="<?= base_url(); ?>auth/store">
 						<h1>Login Megawe</h1>
 						<div>
-							<input type="email" id="email" name="email" class="form-control" placeholder="Email" />
+							<input type="email" id="email" name="email" class="form-control" value="<?= set_value('email'); ?>" placeholder="Email" />
 							<?= form_error('email') ?>
 						</div>
 						<div>
