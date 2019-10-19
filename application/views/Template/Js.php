@@ -83,6 +83,11 @@
         <script src="<?php echo base_url(); ?>assets/sweetalert2/dist/sweetalert2.all.min.js"></script>
         <script src="<?= base_url(); ?>assets/js/myscript.js"></script>
 
+        <!-- PNotify -->
+        <!-- <script src="<?= base_url(); ?>assets/vendors/pnotify/dist/pnotify.js"></script> -->
+        <script src="<?= base_url(); ?>assets/vendors/pnotify/dist/pnotify.buttons.js"></script>
+        <script src="<?= base_url(); ?>assets/vendors/pnotify/dist/pnotify.nonblock.js"></script>
+
         </body>
 
         </html>

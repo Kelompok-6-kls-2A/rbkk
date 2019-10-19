@@ -25,19 +25,53 @@ class User extends CI_Controller
 		$this->load->view('Template/Js');
 	}
 
+	public function show($id)
+	{
+		# code...
+		$data['r'] = $this->user->getById($id);
+		$data['title'] = 'User-detail';
+		$this->load->view('Template/Head', $data);
+		$this->load->view('Template/Sidebar');
+		$this->load->view('Template/Topnavbar');
+		$this->load->view('User/Detail');
+		$this->load->view('Template/Footer');
+		$this->load->view('Template/Js');
+	}
+
+	public function add()
+	{
+		# code...
+		$data['title'] = 'Add-user';
+		$this->load->view('Template/Head', $data);
+		$this->load->view('Template/Sidebar');
+		$this->load->view('Template/Topnavbar');
+		$this->load->view('User/Add');
+		$this->load->view('Template/Footer');
+		$this->load->view('Template/Js');
+	}
+
 	public function store()
 	{
 		# code...
-		$insert = $this->user->insert();
-		if ($insert) {
+		$this->form_validation->set_rules('nama_user', 'Nama', 'trim|required');
+		$this->form_validation->set_rules('alamat_user', 'Alamat', 'trim|required');
+		$this->form_validation->set_rules('tempattl_user', 'TempaLahir', 'trim|required');
+		$this->form_validation->set_rules('tl_user', 'TanggLahir', 'trim|required');
+		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+		$this->form_validation->set_rules('password', 'Password', 'trim|required');
+		$this->form_validation->set_rules('no_hp', 'NoHP', 'trim|required');
+
+		if ($this->form_validation->run() == TRUE) {
 			# code...
-			$this->session->set_flashdata('flash', 'Created');
+			$this->user->insert();
+			$this->session->set_flashdata('flash', 'ditambahkan');
+			redirect('user');
 		} else {
 			# code...
-			$this->session->set_flashdata('flash', 'Created');
+			$this->session->set_flashdata('flash', 'diambahkan');
+			// redirect('user/add');
+			$this->add();
 		}
-
-		redirect('user');
 	}
 
 	public function edit($id)
@@ -56,16 +90,24 @@ class User extends CI_Controller
 	public function update()
 	{
 		# code...
-		$insert = $this->user->update();
-		if ($insert) {
+		$this->form_validation->set_rules('nama_user', 'Nama', 'trim|required');
+		$this->form_validation->set_rules('alamat_user', 'Alamat', 'trim|required');
+		$this->form_validation->set_rules('tempattl_user', 'TempaLahir', 'trim|required');
+		$this->form_validation->set_rules('tl_user', 'TanggLahir', 'trim|required');
+		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+		$this->form_validation->set_rules('password', 'Password', 'trim|required');
+		$this->form_validation->set_rules('no_hp', 'NoHP', 'trim|required');
+
+		if ($this->form_validation->run() == TRUE) {
 			# code...
-			$this->session->set_flashdata('flash', 'Updated');
+			$this->user->update();
+			$this->session->set_flashdata('flash', 'diubah');
+			redirect('user');
 		} else {
 			# code...
-			$this->session->set_flashdata('flash', 'Updated');
+			$this->session->set_flashdata('flash', 'diubah');
+			redirect('user');
 		}
-
-		redirect('user');
 	}
 
 	public function destroy($id)
@@ -79,10 +121,10 @@ class User extends CI_Controller
 			$delete = $this->user->delete($id);
 			if ($delete) {
 				# code...
-				$this->session->set_flashdata('flash', 'Delete');
+				$this->session->set_flashdata('flash', 'dihapus');
 			} else {
 				# code...
-				$this->session->set_flashdata('flash', 'Delete');
+				$this->session->set_flashdata('flash', 'dihapus');
 			}
 		}
 		redirect('user');

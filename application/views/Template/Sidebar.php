@@ -39,6 +39,7 @@
 										<li><a href="<?php echo base_url() ?>user">Data Akun</a></li>
 									</ul>
 								</li>
+								<!-- <li><a href="<?php echo base_url() ?>caripekerjaan"><i class="fa fa-folder"></i>cari Pekerjaan</a></li> -->
 							</ul>
 						</div>
 					</div>

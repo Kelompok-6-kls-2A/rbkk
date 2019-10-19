@@ -27,6 +27,18 @@ class Pekerjaan extends CI_Controller
 		$this->load->view('Template/Js');
 	}
 
+	public function add()
+	{
+		# code...
+		$data['title'] = 'Pekerjaan';
+		$this->load->view('Template/Head', $data);
+		$this->load->view('Template/Sidebar');
+		$this->load->view('Template/Topnavbar');
+		$this->load->view('Pekerjaan/insert');
+		$this->load->view('Template/Footer');
+		$this->load->view('Template/Js');
+	}
+
 	public function store() //dinda
 	{
 		# code...

@@ -54,7 +54,7 @@ class M_user extends CI_Model
 			"email"					=> $_POST['email'],
 			"password"				=> $_POST['password'],
 			"no_hp"					=> $_POST['no_hp'],
-			"foto_profil"			=> $_POST['foto_profil'],
+			"foto_profil"			=> "default.jpg",
 			"idlvl"					=> $_POST['idlvl']
 		);
 
