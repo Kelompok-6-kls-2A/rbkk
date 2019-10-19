@@ -6,7 +6,7 @@ class M_user extends CI_Model
 
 	private $_table = "tb_user";
 
-	public function getAll($id = null)//untuk panggil data
+	public function getAll($id = null) //untuk panggil data
 	{
 		# code...
 		if ($id === null) {
@@ -25,6 +25,17 @@ class M_user extends CI_Model
 			$query = $this->db->get()->result_array();
 			return $query;
 		}
+	}
+
+	public function getlogin($email)
+	{
+		# code...
+		$this->db->SELECT('*')
+			->FROM($this->_table)
+			->JOIN('lvluser', 'lvluser.id_lvl = tb_user.idlvl')
+			->WHERE('email', $email);
+		$query = $this->db->get()->row_array();
+		return $query;
 	}
 
 

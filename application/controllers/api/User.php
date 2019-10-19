@@ -14,6 +14,7 @@ class User extends REST_Controller
 	{
 		parent::__construct();
 		$this->load->model('api/M_user', 'user');
+		$this->load->model('api/M_key', 'key');
 		$this->load->library('form_validation');
 	}
 
@@ -28,6 +29,18 @@ class User extends REST_Controller
 			$data = $this->user->getAll($id);
 		}
 
+		$this->set_response([
+			'status' => TRUE,
+			'data'   => $data,
+			'message' => 'Success'
+		], REST_Controller::HTTP_OK);
+	}
+
+	public function getlogin_get()
+	{
+		# code...
+		$email = $this->get('email');
+		$data = $this->user->getlogin($email);
 		$this->set_response([
 			'status' => TRUE,
 			'data'   => $data,
@@ -68,7 +81,6 @@ class User extends REST_Controller
 				"foto_profil"		=> $this->post('foto_profil'),
 				"idlvl"				=> $this->post('idlvl'),
 			);
-
 			$query = $this->user->insert($data);
 			if ($query > 0) {
 				# code...

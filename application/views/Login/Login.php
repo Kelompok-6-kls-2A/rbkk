@@ -30,18 +30,22 @@
 
 		<div class="login_wrapper">
 			<div class="animate form login_form">
+				<?= $this->session->flashdata('flash'); ?>
 				<section class="login_content">
-					<form>
+					<form method="POST" action="<?= base_url(); ?>auth/store">
 						<h1>Login Megawe</h1>
 						<div>
-							<input type="text" class="form-control" placeholder="Username" required="" />
+							<input type="email" id="email" name="email" class="form-control" placeholder="Email" />
+							<?= form_error('email') ?>
 						</div>
 						<div>
-							<input type="password" class="form-control" placeholder="Password" required="" />
+							<input type="password" id="password" name="password" class="form-control" placeholder="Password" />
+							<?= form_error('password') ?>
 						</div>
 						<div>
-							<a class="btn btn-default submit" href="index.html">Log in</a>
-							<a class="reset_pass" href="#">Lost your password?</a>
+							<!-- <button type="submit" value="Login"></button> -->
+							<button type="submit" class="btn btn-default">Log in</button>
+							<!-- <a class="reset_pass" href="#">Lost your password?</a> -->
 						</div>
 
 						<div class="clearfix"></div>

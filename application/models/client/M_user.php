@@ -14,7 +14,8 @@ class M_user extends CI_Model
 		parent::__construct();
 		//Do your magic here
 		$this->_client = new Client([
-			'base_uri'		=> 'http://localhost/rbkk/api/'
+			'base_uri'		=> 'http://localhost/rbkk/api/',
+			'auth'			=> ['admin', '1234']
 		]);
 	}
 
