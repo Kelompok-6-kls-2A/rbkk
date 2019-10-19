@@ -11,11 +11,11 @@
 					<br />
 					<form method="POST" action="<?= base_url() ?>pekerjaan/update" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 						<div class="form-group">
-							<input type="hidden" value="<?= $r['id_user'] ?>" name="id_user">
+							<input type="hidden" value="<?= $r['id_pekerjaan'] ?>" name="id_pekerjaan">
 							<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nama <span class="required">*</span>
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input type="text" id="nama_user" name="nama_user" required="required" value="<?= $r['nama_user'] ?>" class="form-control col-md-7 col-xs-12">
+								<input type="text" id="id_user" readonly name="id_user" required="required" value="<?= $r['nama_user'] ?>" class="form-control col-md-7 col-xs-12">
 							</div>
 						</div>
 						<div class="form-group">
@@ -45,12 +45,16 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Jam Kerja</label>
+							<label class="control-label col-md-3 col-sm-3 col-xs-12">Jam kerja</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="jam_kerja" class="form-control col-md-7 col-xs-12" value="<?= $r['jam_kerja'] ?>" type="text" name="jam_kerja">
+								<select name="jam_kerja" class="form-control" <?= set_value('jam_kerja'); ?>>
+									<option value="full time"><?= $r['jam_kerja'] ?></option>
+									<option value="full time">Full time</option>
+									<option value="partime">Paruh waktu</option>
+								</select>
+								<?= form_error('jam_kerja'); ?>
 							</div>
 						</div>
-
 						<div class="form-group">
 							<!-- <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Tempat Lahir</label> -->
 							<div class="col-md-6 col-sm-6 col-xs-12">

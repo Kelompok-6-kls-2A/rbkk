@@ -9,52 +9,58 @@
 				</div>
 				<div class="x_content">
 					<br />
-					<form method="POST" action="<?= base_url() ?>pekerjaan/update" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
+					<form method="POST" action="<?= base_url() ?>pekerjaan/store" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left">
 						<div class="form-group">
-							<input type="hidden" value="<?= $r['id_user'] ?>" name="id_user">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Nama <span class="required">*</span>
-							</label>
+							<label class="control-label col-md-3 col-sm-3 col-xs-12">Nama User</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input type="text" id="nama_user" name="nama_user" required="required" value="<?= $r['nama_user'] ?>" class="form-control col-md-7 col-xs-12">
+								<select name="id_user" class="form-control" <?= set_value('id_user'); ?>>
+									<option>pilih nama user</option>
+									<?php foreach ($user as $u) : ?>
+										<option value="<?= $u['id_user']; ?>"><?= $u['nama_user']; ?></option>
+									<?php endforeach; ?>
+								</select>
+								<?= form_error('id_user'); ?>
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Kategori pekerjaan <span class="required">*</span>
+							<label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Kategori pekerjaan
 							</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input type="text" id="nama_kategori_pekerjaan" name="nama_kategori_pekerjaan" value="<?= $r['nama_kategori_pekerjaan'] ?>" required="required" class="form-control col-md-7 col-xs-12">
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Deskripsi</label>
-							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="deskripsi" class="form-control col-md-7 col-xs-12" value="<?= $r['deskripsi'] ?>" type="text" name="deskripsi">
+								<input type="text" id="nama_kategori_pekerjaan" name="nama_kategori_pekerjaan" value="<?= set_value('nama_kategori_pekerjaan'); ?>" class="form-control col-md-7 col-xs-12">
+								<?= form_error('nama_kategori_pekerjaan'); ?>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Gaji</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="gaji" class="form-control col-md-7 col-xs-12" value="<?= $r['gaji'] ?>
-								" type="text" name="gaji">
+								<input id="gaji" class="form-control col-md-7 col-xs-12" value="<?= set_value('gaji'); ?>
+								" type="number" name="gaji">
+								<?= form_error('gaji'); ?>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Lokasi</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="lokasi" class="form-control col-md-7 col-xs-12" value="<?= $r['lokasi'] ?>" type="lokasi" name="lokasi">
+								<input id="lokasi" class="form-control col-md-7 col-xs-12" value="<?= set_value('lokasi'); ?>" type="lokasi" name="lokasi">
+								<?= form_error('lokasi'); ?>
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Jam Kerja</label>
+							<label class="control-label col-md-3 col-sm-3 col-xs-12">Jam kerja</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="jam_kerja" class="form-control col-md-7 col-xs-12" value="<?= $r['jam_kerja'] ?>" type="text" name="jam_kerja">
+								<select name="jam_kerja" class="form-control" <?= set_value('jam_kerja'); ?>>
+									<option>pilih jam kerja</option>
+									<option value="full time">Full time</option>
+									<option value="partime">Paruh waktu</option>
+								</select>
+								<?= form_error('jam_kerja'); ?>
 							</div>
 						</div>
-
 						<div class="form-group">
-							<!-- <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Tempat Lahir</label> -->
+							<label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Deskripsi</label>
 							<div class="col-md-6 col-sm-6 col-xs-12">
-								<input id="idlvl" class="form-control col-md-7 col-xs-12" value="<?= $r['idlvl'] ?>" type="hidden" name="idlvl" value="1">
+								<input id="deskripsi" class="form-control col-md-7 col-xs-12" value="<?= set_value('deskripsi'); ?>" type="text" name="deskripsi">
+								<?= form_error('deskripsi'); ?>
 							</div>
 						</div>
 						<div class="ln_solid"></div>

@@ -91,9 +91,9 @@ class M_pekerjaan extends CI_Model
 	public function delete($id)
 	{
 		# code...
-		$response = $this->_client->request('DELETE', 'user/destroy', [
+		$response = $this->_client->request('DELETE', 'pekerjaan/destroy', [
 			'form_params'	=> [
-				'id_user'	=> $id
+				'id_pekerjaan'	=> $id
 			]
 		]);
 

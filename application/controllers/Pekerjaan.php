@@ -10,6 +10,7 @@ class Pekerjaan extends CI_Controller
 		//Do your magic here
 		// $this->API = "http://localhost/rbkk/api";
 		$this->load->model('client/M_pekerjaan', 'pekerjaan');
+		$this->load->model('client/M_user', 'user');
 		$this->load->library('form_validation');
 	}
 
@@ -27,9 +28,16 @@ class Pekerjaan extends CI_Controller
 		$this->load->view('Template/Js');
 	}
 
+	public function show($id)
+	{
+		# code...
+
+	}
+
 	public function add()
 	{
 		# code...
+		$data['user'] = $this->user->getAll();
 		$data['title'] = 'Pekerjaan';
 		$this->load->view('Template/Head', $data);
 		$this->load->view('Template/Sidebar');
@@ -42,16 +50,23 @@ class Pekerjaan extends CI_Controller
 	public function store() //dinda
 	{
 		# code...
-		$insert = $this->pekerjaan->insert();
-		if ($insert) {
+		$this->form_validation->set_rules('id_user', 'Nama Pemilik pekerjaan', 'trim|required');
+		$this->form_validation->set_rules('nama_kategori_pekerjaan', 'Nama Ketegori pekerjaan', 'trim|required');
+		$this->form_validation->set_rules('gaji', 'Gaji', 'trim|required');
+		$this->form_validation->set_rules('lokasi', 'Lokasi', 'trim|required');
+		$this->form_validation->set_rules('jam_kerja', 'Jam Kerja', 'trim|required');
+		$this->form_validation->set_rules('deskripsi', 'Deskripsi', 'trim|required');
+
+		if ($this->form_validation->run() == TRUE) {
 			# code...
+			$this->pekerjaan->insert();
 			$this->session->set_flashdata('flash', 'ditambahkan');
+			redirect('pekerjaan');
 		} else {
 			# code...
 			$this->session->set_flashdata('flash', 'ditambahkan');
+			$this->add();
 		}
-
-		redirect('pekerjaan');
 	}
 
 	public function edit($id)
@@ -90,17 +105,16 @@ class Pekerjaan extends CI_Controller
 			redirect('pekerjaan');
 		} else {
 			# code...
-			// $delete = $this->curl->simple_delete($this->API . '/a_user/destroy', array('id_user' => $id), array(CURLOPT_BUFFERSIZE => 10));
-			$delete = $this->user->delete($id);
+			$delete = $this->pekerjaan->delete($id);
 			if ($delete) {
 				# code...
-				$this->session->set_flashdata('hasil', 'Delete Data Berhasil');
+				$this->session->set_flashdata('flash', 'dihapus');
 			} else {
 				# code...
-				$this->session->set_flashdata('hasil', 'Delete Data Gagal');
+				$this->session->set_flashdata('flash', 'dihapus');
 			}
 		}
-		redirect('user');
+		redirect('pekerjaan');
 	}
 }
 
