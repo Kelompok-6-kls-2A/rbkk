@@ -28,12 +28,6 @@ class Auth extends CI_Controller
 			$this->load->view('Login/Login');
 		} else {
 			# code...
-			// $data = [
-			// 	'email'			=> $this->input->post('email'),
-			// 	'password'		=> $this->input->post('password'),
-			// ];
-
-			// var_dump($data);
 			$this->_login();
 		}
 	}
@@ -45,16 +39,17 @@ class Auth extends CI_Controller
 
 		$user = $this->authm->getlogin($email);
 
+		$_pass = $user['password'];
 		if ($email) {
 			# code...
-			if (password_verify($password, $user['password'])) {
+			if (password_verify($password, $_pass)) {
 				# code...
 				$data = [
 					'email'		=> $user['email'],
 					'idlvl'		=> $user['idlvl']
 				];
 				$this->session->set_userdata($data);
-				if ($user['idlvl'] == 1) {
+				if ($user['idlvl'] == 2) {
 					redirect('user');
 				}
 			} else {

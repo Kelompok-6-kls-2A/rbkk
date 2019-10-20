@@ -29,7 +29,7 @@ class M_auth extends CI_Model
 
 		$result = json_decode($response->getBody()->getContents(), true);
 
-		return $result['data'][0];
+		return $result['data'];
 	}
 }
 
