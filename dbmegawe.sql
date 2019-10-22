@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 19, 2019 at 09:22 AM
+-- Generation Time: Oct 22, 2019 at 08:19 AM
 -- Server version: 10.2.6-MariaDB-log
 -- PHP Version: 7.3.2
 
@@ -103,7 +103,7 @@ CREATE TABLE `tb_pekerjaan` (
 --
 
 INSERT INTO `tb_pekerjaan` (`id_pekerjaan`, `id_user`, `nama_kategori_pekerjaan`, `deskripsi`, `gaji`, `lokasi`, `jam_kerja`) VALUES
-(15, 55, 'coba', 'asd', 10000, 'malang', 'full time');
+(16, 60, 'asd', 'asd', 10000, 'asd', 'full time');
 
 -- --------------------------------------------------------
 
@@ -118,7 +118,7 @@ CREATE TABLE `tb_user` (
   `tempattl_user` varchar(50) NOT NULL,
   `tl_user` date NOT NULL,
   `email` varchar(50) DEFAULT NULL,
-  `password` varchar(20) NOT NULL,
+  `password` varchar(128) NOT NULL,
   `no_hp` varchar(20) NOT NULL,
   `foto_profil` varchar(50) NOT NULL DEFAULT 'default.jpg',
   `idlvl` int(11) NOT NULL
@@ -129,8 +129,8 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id_user`, `nama_user`, `alamat_user`, `tempattl_user`, `tl_user`, `email`, `password`, `no_hp`, `foto_profil`, `idlvl`) VALUES
-(55, 'Abdul Qhodir Zaelany', 'tirto', 'Malang', '2019-10-19', 'qodiraja23@gmail.com', '$2y$10$7NWMmJce4SNbA', '085234101001', 'default.jpg', 1),
-(56, 'Abdul Qhodir Zaelany', 'Jl. Raya Tlogomas 246, T. Informatika Universitas Muhammadiyah Malang', 'Malang', '1997-05-25', 'qodirtok@gmail.com', '$2y$10$zbd0zDry3G6Hd', '085234101001', 'default.jpg', 1);
+(60, 'Abdul Qhodir Zaelany', 'Jl. Raya Tlogomas 246, T. Informatika Universitas Muhammadiyah Malang', 'Malang', '2019-10-20', 'qodirtok@gmail.com', '$2y$10$MvMFbVx9yIZmouquY6Eize96s5dtceE0lBIkqI.klz2zM4MQ4Aeuq', '085234101001', 'default.jpg', 1),
+(61, 'Abdul Qhodir Zaelany', 'Jl. Raya Tlogomas 246, T. Informatika Universitas Muhammadiyah Malang', 'lkjlkjlkjlkjkljlkj', '2019-10-21', 'qodiraja23@gmail.com', '$2y$10$Lz8UZW5nQ0inxt.l2f4jXuWEBiHD0YL5EXD219MY6/A6WTbAlr1Gy', '085234101001', 'default.jpg', 1);
 
 --
 -- Indexes for dumped tables
@@ -195,13 +195,13 @@ ALTER TABLE `tb_berkas`
 -- AUTO_INCREMENT for table `tb_pekerjaan`
 --
 ALTER TABLE `tb_pekerjaan`
-  MODIFY `id_pekerjaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_pekerjaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- Constraints for dumped tables
