@@ -53,11 +53,8 @@ class User extends REST_Controller
 		$this->form_validation->set_data($data);
 		$this->form_validation->set_rules('nama_user', 'message', 'required');
 		$this->form_validation->set_rules('alamat_user', 'message', 'required');
-		$this->form_validation->set_rules('tempattl_user', 'message', 'required');
-		$this->form_validation->set_rules('tl_user', 'message', 'required');
 		$this->form_validation->set_rules('email', 'message', 'required');
 		$this->form_validation->set_rules('password', 'message', 'required');
-		$this->form_validation->set_rules('no_hp', 'message', 'required');
 		$this->form_validation->set_rules('idlvl', 'message', 'required');
 
 		if ($this->form_validation->run() == FALSE) {

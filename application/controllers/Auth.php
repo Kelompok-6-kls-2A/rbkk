@@ -45,12 +45,17 @@ class Auth extends CI_Controller
 			if (password_verify($password, $_pass)) {
 				# code...
 				$data = [
-					'email'		=> $user['email'],
-					'idlvl'		=> $user['idlvl']
+					'id_user'		=> $user['id_user'],
+					'nama_user'		=> $user['nama_user'],
+					'foto_profil'	=> $user['foto_profil'],
+					'email'			=> $user['email'],
+					'idlvl'			=> $user['idlvl']
 				];
 				$this->session->set_userdata($data);
-				if ($user['idlvl'] == 2) {
-					redirect('user');
+				if ($user['idlvl'] == 1) {
+					redirect('dashboard');
+				} else {
+					redirect('dashboard');
 				}
 			} else {
 				# code...
@@ -62,6 +67,18 @@ class Auth extends CI_Controller
 			$this->session->set_flashdata('flash', '<div class="alert alert-danger" role="alert"> Email isnot registered! </div>');
 			redirect('auth');
 		}
+	}
+
+	public function logout()
+	{
+		# code...
+		$this->session->unset_userdata('email');
+		$this->session->unset_userdata('idlvl');
+		$this->session->set_flashdata('flash', '<div class="alert alert-success" role="alert">
+			You has been Log Out!
+		  </div>');
+
+		redirect('auth');
 	}
 }
 
