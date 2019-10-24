@@ -16,18 +16,18 @@
 					<?= form_error('password') ?>
 				</div>
 				<div>
-					<!-- <button type="submit" value="Login"></button> -->
 					<button type="submit" class="btn btn-default">Log in</button>
 					<!-- <a class="reset_pass" href="#">Lost your password?</a> -->
 				</div>
 
-				<div class="clearfix"></div>
 
 				<div class="separator">
+
 					<p class="change_link">No have account?
 						<a href="<?= base_url(''); ?>auth/daftar" class="to_register"> Create Account </a>
 					</p>
-
+					<div class="clearfix"></div>
+					<a href="<?= base_url(); ?>landing" class="btn btn-warning" value="Cancel">Cancel</a>
 					<div class="clearfix"></div>
 					<br />
 

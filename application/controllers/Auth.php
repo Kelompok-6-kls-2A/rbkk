@@ -101,13 +101,19 @@ class Auth extends CI_Controller
 	public function logout()
 	{
 		# code...
-		$this->session->unset_userdata('email');
-		$this->session->unset_userdata('idlvl');
+		$data = [
+			'id_user',
+			'nama_user',
+			'foto_profil',
+			'email',
+			'idlvl'
+		];
+		$this->session->unset_userdata($data);
 		$this->session->set_flashdata('flash', '<div class="alert alert-success" role="alert">
 			You has been Log Out!
 		  </div>');
 
-		redirect('auth');
+		redirect('/');
 	}
 }
 
