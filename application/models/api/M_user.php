@@ -27,6 +27,13 @@ class M_user extends CI_Model
 		}
 	}
 
+	public function register($data)
+	{
+		# code...
+		$this->db->insert($this->_table, $data);
+		return $this->db->affected_rows();
+	}
+
 	public function getlogin($email)
 	{
 		# code...

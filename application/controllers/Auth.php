@@ -14,7 +14,9 @@ class Auth extends CI_Controller
 	public function index()
 	{
 		# code...
+		$this->load->view('Template/Authhead');
 		$this->load->view('Login/Login');
+		$this->load->view('Template/Authfooter');
 	}
 
 	public function store()
@@ -25,10 +27,37 @@ class Auth extends CI_Controller
 
 		if ($this->form_validation->run() == FALSE) {
 			# code...
+			$this->load->view('Template/Authhead');
 			$this->load->view('Login/Login');
+			$this->load->view('Template/Authfooter');
 		} else {
 			# code...
 			$this->_login();
+		}
+	}
+
+	public function daftar()
+	{
+		# code...
+		$this->load->view('Template/Authhead');
+		$this->load->view('Login/Register');
+		$this->load->view('Template/Authfooter');
+	}
+
+	public function register()
+	{
+		$this->form_validation->set_rules('email', 'Email', 'trim|reqiured');
+		$this->form_validation->set_rules('password', 'Password', 'trim|reqiured');
+		if ($this->form_validation->run() == FALSE) {
+			# code...
+			$this->authm->register();
+			$this->session->set_flashdata('flash', '<div class="alert alert-success" role="alert"> Register Sukses! </div>');
+			redirect('auth');
+		} else {
+			# code...
+			$this->load->view('Template/Authhead');
+			$this->load->view('Login/Register');
+			$this->load->view('Template/Authfooter');
 		}
 	}
 

@@ -31,6 +31,22 @@ class M_auth extends CI_Model
 
 		return $result['data'];
 	}
+
+	public function register()
+	{
+		# code...
+		$data = array(
+			"email"		=> $this->input->post('email', true),
+			"password"	=> $this->input->post('password', true)
+		);
+
+		$response = $this->_client->request('POST', 'user/register', [
+			'form_params'		=> $data
+		]);
+
+		$result = json_decode($response->getBody()->getContents(), true);
+		return $result;
+	}
 }
 
 /* End of file M_auth.php */

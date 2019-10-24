@@ -29,16 +29,26 @@
 							<h3>General</h3>
 							<ul class="nav side-menu">
 								<li><a href="<?php echo base_url() ?>dashboard"><i class="fa fa-home"></i> Dashboard</a></li>
-								<li><a><i class="fa fa-edit"></i> Master<span class="fa fa-chevron-down"></span></a>
-									<ul class="nav child_menu">
-										<li><a href="<?php echo base_url() ?>pekerjaan">Pekerjaan</a></li>
-									</ul>
-								</li>
-								<li><a><i class="fa fa-user"></i> Akun<span class="fa fa-chevron-down"></span></a>
-									<ul class="nav child_menu">
-										<li><a href="<?php echo base_url() ?>user">Data Akun</a></li>
-									</ul>
-								</li>
+								<?php if ($this->session->userdata('idlvl') == 1) : ?>
+									<li><a><i class="fa fa-edit"></i> Master<span class="fa fa-chevron-down"></span></a>
+										<ul class="nav child_menu">
+											<li><a href="<?php echo base_url() ?>pekerjaan">Pekerjaan</a></li>
+										</ul>
+									</li>
+									<li><a><i class="fa fa-user"></i> Akun<span class="fa fa-chevron-down"></span></a>
+										<ul class="nav child_menu">
+											<li><a href="<?php echo base_url() ?>user">Data Akun</a></li>
+										</ul>
+									</li>
+								<?php endif; ?>
+
+								<?php if ($this->session->userdata('idlvl') == 2) : ?>
+									<li><a href="#"><i class="fa fa-folder"></i> Cari Pekerjaan</a></li>
+								<?php endif; ?>
+
+								<?php if ($this->session->userdata('idlvl') == 3) : ?>
+									<li><a href="#"><i class="fa fa-folder"></i>Pekerjaan</a></li>
+								<?php endif; ?>
 								<!-- <li><a href="<?php echo base_url() ?>caripekerjaan"><i class="fa fa-folder"></i>cari Pekerjaan</a></li> -->
 							</ul>
 						</div>

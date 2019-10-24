@@ -51,11 +51,11 @@ class User extends REST_Controller
 	{
 		$data = $this->security->xss_clean($_POST);
 		$this->form_validation->set_data($data);
-		$this->form_validation->set_rules('nama_user', 'message', 'required');
-		$this->form_validation->set_rules('alamat_user', 'message', 'required');
-		$this->form_validation->set_rules('email', 'message', 'required');
-		$this->form_validation->set_rules('password', 'message', 'required');
-		$this->form_validation->set_rules('idlvl', 'message', 'required');
+		$this->form_validation->set_rules('nama_user', 'message');
+		$this->form_validation->set_rules('alamat_user', 'message');
+		$this->form_validation->set_rules('email', 'message');
+		$this->form_validation->set_rules('password', 'message');
+		$this->form_validation->set_rules('idlvl', 'message');
 
 		if ($this->form_validation->run() == FALSE) {
 			// Form Validation Errors
@@ -85,6 +85,44 @@ class User extends REST_Controller
 					'data'   => $data,
 					'message' => 'Field has been Created Success'
 				], REST_Controller::HTTP_CREATED);
+			} else {
+				# code...
+				$this->set_response([
+					'status' => FALSE,
+					'message' => 'Not Acceptable'
+				], REST_Controller::HTTP_NOT_ACCEPTABLE);
+			}
+		}
+	}
+	public function register_post()
+	{
+		$data = $this->security->xss_clean($_POST);
+		$this->form_validation->set_data($data);
+		$this->form_validation->set_rules('email', 'message', 'required');
+		$this->form_validation->set_rules('password', 'message', 'required');
+
+		if ($this->form_validation->run() == FALSE) {
+			// Form Validation Errors
+			$this->set_response([
+				'status' => FALSE,
+				'error' => $this->form_validation->error_array(),
+				'message' => validation_errors()
+			], REST_Controller::HTTP_NOT_FOUND);
+		} else {
+			// Success function
+			$data = [
+				'email'			=> $this->post('email'),
+				'password'		=> password_hash($this->post('password'), PASSWORD_DEFAULT),
+				'idlvl'			=> 2
+			];
+			$query = $this->user->register($data);
+			if ($query) {
+				# code...
+				$this->set_response([
+					'status' => TRUE,
+					'data'   => $data,
+					'message' => 'Success'
+				], REST_Controller::HTTP_OK);
 			} else {
 				# code...
 				$this->set_response([
