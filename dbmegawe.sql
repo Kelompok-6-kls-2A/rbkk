@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Oct 22, 2019 at 08:19 AM
+-- Generation Time: Oct 25, 2019 at 09:30 AM
 -- Server version: 10.2.6-MariaDB-log
 -- PHP Version: 7.3.2
 
@@ -75,11 +75,11 @@ INSERT INTO `lvluser` (`id_lvl`, `kategori_user`) VALUES
 CREATE TABLE `tb_berkas` (
   `id_berkas` int(11) NOT NULL,
   `id_pekerjaan` int(11) NOT NULL,
-  `SKCK` varchar(50) NOT NULL,
-  `CV` varchar(50) NOT NULL,
-  `foto` varchar(50) NOT NULL,
-  `foto_ktp` varchar(50) NOT NULL,
-  `lainlain` varchar(50) NOT NULL
+  `SKCK` varchar(50) DEFAULT NULL,
+  `CV` varchar(50) DEFAULT NULL,
+  `foto` varchar(50) DEFAULT NULL,
+  `foto_ktp` varchar(50) DEFAULT NULL,
+  `lainlain` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -91,19 +91,21 @@ CREATE TABLE `tb_berkas` (
 CREATE TABLE `tb_pekerjaan` (
   `id_pekerjaan` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
-  `nama_kategori_pekerjaan` varchar(50) NOT NULL,
-  `deskripsi` text NOT NULL,
-  `gaji` int(11) NOT NULL,
-  `lokasi` varchar(50) NOT NULL,
-  `jam_kerja` enum('full time','partime') NOT NULL
+  `nama_kategori_pekerjaan` varchar(50) DEFAULT NULL,
+  `deskripsi` text DEFAULT NULL,
+  `gaji` int(11) DEFAULT NULL,
+  `lokasi` varchar(50) DEFAULT NULL,
+  `jam_kerja` enum('full time','partime') DEFAULT NULL,
+  `created_add` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_pekerjaan`
 --
 
-INSERT INTO `tb_pekerjaan` (`id_pekerjaan`, `id_user`, `nama_kategori_pekerjaan`, `deskripsi`, `gaji`, `lokasi`, `jam_kerja`) VALUES
-(16, 60, 'asd', 'asd', 10000, 'asd', 'full time');
+INSERT INTO `tb_pekerjaan` (`id_pekerjaan`, `id_user`, `nama_kategori_pekerjaan`, `deskripsi`, `gaji`, `lokasi`, `jam_kerja`, `created_add`) VALUES
+(16, 60, 'asd', 'asd', 10000, 'asd', 'full time', '2019-10-24 02:13:57'),
+(18, 60, 'coba', 'dfssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss', 10000, 'Malang', 'full time', '2019-10-25 02:54:52');
 
 -- --------------------------------------------------------
 
@@ -113,24 +115,26 @@ INSERT INTO `tb_pekerjaan` (`id_pekerjaan`, `id_user`, `nama_kategori_pekerjaan`
 
 CREATE TABLE `tb_user` (
   `id_user` int(11) NOT NULL,
-  `nama_user` varchar(50) NOT NULL,
-  `alamat_user` text NOT NULL,
-  `tempattl_user` varchar(50) NOT NULL,
-  `tl_user` date NOT NULL,
+  `nama_user` varchar(50) DEFAULT NULL,
+  `alamat_user` text DEFAULT NULL,
+  `tempattl_user` varchar(50) DEFAULT NULL,
+  `tl_user` date DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
-  `password` varchar(128) NOT NULL,
-  `no_hp` varchar(20) NOT NULL,
-  `foto_profil` varchar(50) NOT NULL DEFAULT 'default.jpg',
-  `idlvl` int(11) NOT NULL
+  `password` varchar(128) DEFAULT NULL,
+  `no_hp` varchar(20) DEFAULT NULL,
+  `foto_profil` varchar(50) DEFAULT 'default.jpg',
+  `idlvl` int(11) DEFAULT NULL,
+  `created_add` timestamp NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_user`
 --
 
-INSERT INTO `tb_user` (`id_user`, `nama_user`, `alamat_user`, `tempattl_user`, `tl_user`, `email`, `password`, `no_hp`, `foto_profil`, `idlvl`) VALUES
-(60, 'Abdul Qhodir Zaelany', 'Jl. Raya Tlogomas 246, T. Informatika Universitas Muhammadiyah Malang', 'Malang', '2019-10-20', 'qodirtok@gmail.com', '$2y$10$MvMFbVx9yIZmouquY6Eize96s5dtceE0lBIkqI.klz2zM4MQ4Aeuq', '085234101001', 'default.jpg', 1),
-(61, 'Abdul Qhodir Zaelany', 'Jl. Raya Tlogomas 246, T. Informatika Universitas Muhammadiyah Malang', 'lkjlkjlkjlkjkljlkj', '2019-10-21', 'qodiraja23@gmail.com', '$2y$10$Lz8UZW5nQ0inxt.l2f4jXuWEBiHD0YL5EXD219MY6/A6WTbAlr1Gy', '085234101001', 'default.jpg', 1);
+INSERT INTO `tb_user` (`id_user`, `nama_user`, `alamat_user`, `tempattl_user`, `tl_user`, `email`, `password`, `no_hp`, `foto_profil`, `idlvl`, `created_add`) VALUES
+(60, 'Abdul Qhodir Zaelany', 'Jl. Raya Tlogomas 246, T. Informatika Universitas Muhammadiyah Malang', 'Malang', '2019-10-20', 'qodirtok@gmail.com', '$2y$10$MvMFbVx9yIZmouquY6Eize96s5dtceE0lBIkqI.klz2zM4MQ4Aeuq', '085234101001', 'default.jpg', 1, NULL),
+(64, NULL, NULL, NULL, NULL, 'pwwnned@gmail.com', '$2y$10$LN/hpdR5QsSuiJYbNM3/s.g6V1yr0brLQ2ryiR6nLqFwuljjn9H9i', NULL, 'default.jpg', 2, '2019-10-24 02:13:01'),
+(67, NULL, NULL, NULL, NULL, 'rahmatillah36@yahoo.com', '$2y$10$Olu4rq7PPJOPy0A1DFGQ1.8lmG/meyJStxW.N1nrwjHTodyUlcgI.', NULL, 'default.jpg', 3, '2019-10-25 02:11:00');
 
 --
 -- Indexes for dumped tables
@@ -195,13 +199,13 @@ ALTER TABLE `tb_berkas`
 -- AUTO_INCREMENT for table `tb_pekerjaan`
 --
 ALTER TABLE `tb_pekerjaan`
-  MODIFY `id_pekerjaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_pekerjaan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- Constraints for dumped tables
