@@ -46,8 +46,10 @@ class Auth extends CI_Controller
 
 	public function register()
 	{
-		$this->form_validation->set_rules('email', 'Email', 'trim|reqiured');
+		$this->form_validation->set_rules('email', 'Email', 'trim|reqiured|valid_email|is_unique[tb_user.email]');
 		$this->form_validation->set_rules('password', 'Password', 'trim|reqiured');
+		$this->form_validation->set_rules('idlvl', 'Kategori', 'reqiured');
+
 		if ($this->form_validation->run() == FALSE) {
 			# code...
 			$this->authm->register();
@@ -81,11 +83,8 @@ class Auth extends CI_Controller
 					'idlvl'			=> $user['idlvl']
 				];
 				$this->session->set_userdata($data);
-				if ($user['idlvl'] == 1) {
-					redirect('dashboard');
-				} else {
-					redirect('dashboard');
-				}
+				$this->session->set_flashdata('flash', 'Masuk');
+				redirect('dashboard');
 			} else {
 				# code...
 				$this->session->set_flashdata('flash', '<div class="alert alert-danger" role="alert"> Wrong Password! </div>');

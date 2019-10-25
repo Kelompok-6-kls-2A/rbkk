@@ -6,7 +6,7 @@
         				<a id="menu_toggle"><i class="fa fa-bars"></i></a>
         			</div>
 
-        			<?php if ($this->session->userdata('email')) : ?>
+        			<?php if ($this->session->userdata('nama_user') == true) : ?>
         				<ul class="nav navbar-nav navbar-right">
         					<li class="">
         						<a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">

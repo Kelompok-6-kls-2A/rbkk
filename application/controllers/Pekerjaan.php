@@ -13,6 +13,10 @@ class Pekerjaan extends CI_Controller
 		$this->load->model('client/M_user', 'user');
 		$this->load->library('form_validation');
 		is_logged_in();
+		if ($this->session->userdata('idlvl') != 1) {
+			# code...
+			redirect('dashboard');
+		}
 	}
 
 

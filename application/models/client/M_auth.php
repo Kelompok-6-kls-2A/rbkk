@@ -14,8 +14,7 @@ class M_auth extends CI_Model
 		parent::__construct();
 		//Do your magic here
 		$this->_client = new Client([
-			'base_uri'		=> 'http://localhost/rbkk/api/',
-			'auth'			=> ['admin', '1234']
+			'base_uri'		=> 'http://localhost/rbkk/api/'
 		]);
 	}
 	public function getlogin($email)
@@ -37,6 +36,7 @@ class M_auth extends CI_Model
 		# code...
 		$data = array(
 			"email"		=> $this->input->post('email', true),
+			"idlvl"		=> $this->input->post('idlvl', true),
 			"password"	=> $this->input->post('password', true)
 		);
 

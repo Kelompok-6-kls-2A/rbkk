@@ -51,11 +51,11 @@ class User extends REST_Controller
 	{
 		$data = $this->security->xss_clean($_POST);
 		$this->form_validation->set_data($data);
-		$this->form_validation->set_rules('nama_user', 'message');
-		$this->form_validation->set_rules('alamat_user', 'message');
-		$this->form_validation->set_rules('email', 'message');
-		$this->form_validation->set_rules('password', 'message');
-		$this->form_validation->set_rules('idlvl', 'message');
+		$this->form_validation->set_rules('nama_user', 'message', 'required');
+		$this->form_validation->set_rules('alamat_user', 'message', 'required');
+		$this->form_validation->set_rules('email', 'message', 'required');
+		$this->form_validation->set_rules('password', 'message', 'required');
+		$this->form_validation->set_rules('idlvl', 'message', 'required');
 
 		if ($this->form_validation->run() == FALSE) {
 			// Form Validation Errors
@@ -98,8 +98,9 @@ class User extends REST_Controller
 	{
 		$data = $this->security->xss_clean($_POST);
 		$this->form_validation->set_data($data);
-		$this->form_validation->set_rules('email', 'message', 'required');
+		$this->form_validation->set_rules('email', 'message', 'required|trim|valid_email');
 		$this->form_validation->set_rules('password', 'message', 'required');
+		$this->form_validation->set_rules('idlvl', 'message', 'required');
 
 		if ($this->form_validation->run() == FALSE) {
 			// Form Validation Errors
@@ -113,7 +114,7 @@ class User extends REST_Controller
 			$data = [
 				'email'			=> $this->post('email'),
 				'password'		=> password_hash($this->post('password'), PASSWORD_DEFAULT),
-				'idlvl'			=> 2
+				'idlvl'			=> $this->post('idlvl')
 			];
 			$query = $this->user->register($data);
 			if ($query) {

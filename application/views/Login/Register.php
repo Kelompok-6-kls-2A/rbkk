@@ -12,6 +12,22 @@
 					<input type="password" class="form-control" name="password" <?= set_value('password'); ?> placeholder="Password">
 					<?= form_error('password') ?>
 				</div>
+				<div class="form-group">
+					<label class="control-label col-md-3 col-sm-3 col-xs-12"></label>
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<div id="gender" class="btn-group" data-toggle="buttons">
+							<label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+								<input type="radio" name="idlvl" value=3> &nbsp; Owner &nbsp;
+							</label>
+							<label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+								<input type="radio" name="idlvl" value="2"> Pekerja
+							</label>
+						</div>
+					</div>
+				</div>
+				<br>
+				<hr>
+				<div class="clearfix"></div>
 				<div>
 					<button class="btn btn-default submit" type="submit">Submit</button>
 				</div>

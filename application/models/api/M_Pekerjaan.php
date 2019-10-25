@@ -5,7 +5,7 @@ class M_pekerjaan extends CI_Model
 {
 	private $_table = "tb_pekerjaan";
 
-	public function getAll($id = null) 
+	public function getAll($id = null)
 
 	{
 		# code...
@@ -13,7 +13,8 @@ class M_pekerjaan extends CI_Model
 			# code...
 			$this->db->SELECT('*')
 				->FROM($this->_table)
-				->JOIN('tb_user', 'tb_user.id_user = tb_pekerjaan.id_user');
+				->JOIN('tb_user', 'tb_user.id_user = tb_pekerjaan.id_user')
+				->ORDER_BY('tb_pekerjaan.created_add', 'DESC');
 			$query = $this->db->get()->result_array();
 			return $query;
 		} else {

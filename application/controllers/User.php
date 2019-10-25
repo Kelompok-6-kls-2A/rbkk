@@ -16,6 +16,10 @@ class User extends CI_Controller
 
 	public function index()
 	{
+		if ($this->session->userdata('idlvl') != 1) {
+			# code...
+			redirect('dashboard');
+		}
 		$data['users'] = $this->user->getAll();
 		$data['title'] = 'User';
 		$this->load->view('Template/Head', $data);
@@ -41,6 +45,10 @@ class User extends CI_Controller
 
 	public function add()
 	{
+		if ($this->session->userdata('idlvl') != 1) {
+			# code...
+			redirect('dashboard');
+		}
 		# code...
 		$data['title'] = 'Add-user';
 		$this->load->view('Template/Head', $data);
