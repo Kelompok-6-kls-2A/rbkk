@@ -4,14 +4,14 @@ if (flashData) {
 	Swal.fire({
 		// position: 'top-end',
 		type: "success",
-		title: "Data berhasil " + flashData,
+		title: "Berhasil " + flashData,
 		showConfirmButton: false,
 		timer: 1500
 	});
 }
 
 //hapus
-$(".tombol-hapus").on("click", function(e) {
+$(".tombol-hapus").on("click", function (e) {
 	e.preventDefault();
 	const href = $(this).attr("href");
 	Swal.fire({
