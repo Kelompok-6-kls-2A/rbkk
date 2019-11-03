@@ -17,7 +17,7 @@
 							</div>
 							<div class="profile_info">
 								<span>Welcome,</span>
-								<h2><?= $this->session->userdata('nama_user'); ?></h2>
+								<h2><?= $this->session->userdata('nama_user'); ?> <a href="<?= base_url(); ?>user/show/<?= $this->session->userdata('id_user'); ?>" class="badge badge-xs-primary">edit profil</a></h2>
 							</div>
 						</div>
 					<?php endif; ?>
@@ -51,8 +51,8 @@
 								<?php endif; ?>
 
 								<?php if ($this->session->userdata('idlvl') == 3) : ?>
-									<li><a href="<?php echo base_url() ?>dashboard"><i class="fa fa-home"></i> Dashboard</a></li>
-									<li><a href="#"><i class="fa fa-folder"></i>Pekerjaan</a></li>
+									<li><a href="<?php echo base_url(); ?>dashboard"><i class="fa fa-home"></i> Dashboard</a></li>
+									<li><a href="<?php echo base_url(); ?>pekerjaanuser"><i class="fa fa-folder"></i>Pekerjaan</a></li>
 								<?php endif; ?>
 								<?php if ($this->session->userdata('email')) : ?>
 									<li><a href="<?php echo base_url() ?>auth/logout"><i class=""></i>Log Out</a></li>

@@ -31,8 +31,10 @@
 
 									<td>
 										<a href="<?= base_url() ?>pekerjaan/show/<?= $value['id_pekerjaan'] ?>" class="btn btn-warning"><span class="fa fa-eye"></span> detail</a>
-										<a href="<?= base_url() ?>pekerjaan/edit/<?= $value['id_pekerjaan'] ?>" class="btn btn-primary"><span class="fa fa-edit"></span> edit</a>
-										<a href="<?= base_url() ?>pekerjaan/destroy/<?= $value['id_pekerjaan'] ?>" class="btn btn-danger tombol-hapus"><span class="fa fa-trash"></span> hapus</a></td>
+										<?php if ($this->session->userdata('idlvl') === 1) : ?>
+											<a href="<?= base_url() ?>pekerjaan/edit/<?= $value['id_pekerjaan'] ?>" class="btn btn-primary"><span class="fa fa-edit"></span> edit</a>
+											<a href="<?= base_url() ?>pekerjaan/destroy/<?= $value['id_pekerjaan'] ?>" class="btn btn-danger tombol-hapus"><span class="fa fa-trash"></span> hapus</a></td>
+								<?php endif; ?>
 								</tr>
 							<?php endforeach; ?>
 						</tbody>
