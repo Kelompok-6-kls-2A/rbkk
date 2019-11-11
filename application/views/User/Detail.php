@@ -28,7 +28,10 @@
 										<ul class="list-unstyled">
 											<li><i class="fa fa-at"></i> Email: <?= $r['email']; ?></li>
 											<li><i class="fa fa-home"></i> Alamat: <?= $r['alamat_user']; ?></li>
-											<li><i class="fa fa-calendar"></i> Tempat,tanggal lahir : <?= $r['tempattl_user'] . ',' . $r['tl_user']; ?></li>
+											<?php if ($r['tempattl_user'] != null) : ?>
+												<li><i class="fa fa-calendar"></i> Tempat,tanggal lahir : <?= $r['tempattl_user'] . ',' . $r['tl_user']; ?></li>
+											<?php endif; ?>
+											<li><i class="fa fa-calendar"></i> Tempat,tanggal lahir : --, ----</li>
 											<li><i class="fa fa-phone"></i> Nomor Handphone : <?= $r['no_hp']; ?></li>
 										</ul>
 									</div>

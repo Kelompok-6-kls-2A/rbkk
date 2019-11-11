@@ -47,14 +47,14 @@
 
 								<?php if ($this->session->userdata('idlvl') == 2) : ?>
 									<li><a href="<?php echo base_url() ?>dashboard"><i class="fa fa-home"></i> Dashboard</a></li>
-									<li><a href="#"><i class="fa fa-folder"></i> Cari Pekerjaan</a></li>
+									<li><a href="<?php echo base_url(); ?>pekerjaanuser"><i class="fa fa-folder"></i> Cari Pekerjaan</a></li>
 								<?php endif; ?>
 
 								<?php if ($this->session->userdata('idlvl') == 3) : ?>
 									<li><a href="<?php echo base_url(); ?>dashboard"><i class="fa fa-home"></i> Dashboard</a></li>
 									<li><a href="<?php echo base_url(); ?>pekerjaanuser"><i class="fa fa-folder"></i>Pekerjaan</a></li>
 								<?php endif; ?>
-								<?php if ($this->session->userdata('email')) : ?>
+								<?php if ($this->session->userdata('email') == true) : ?>
 									<li><a href="<?php echo base_url() ?>auth/logout"><i class=""></i>Log Out</a></li>
 								<?php else : ?>
 									<li><a href="<?php echo base_url() ?>auth"><i class="fa fa-folder"></i>Login</a></li>

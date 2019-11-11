@@ -10,7 +10,9 @@
 				</div>
 				<div class="x_content">
 					<p class="text-muted font-13 m-b-30">
-						<a href="<?= base_url(); ?>pekerjaan/add" class="btn btn-primary"> <span class="fa fa-plus"></span> Tambah data</a>
+						<?php if ($this->session->userdata('idlvl') == 1 && $this->session->userdata('idlvl') == 3) : ?>
+							<a href="<?= base_url(); ?>pekerjaan/add" class="btn btn-primary"> <span class="fa fa-plus"></span> Tambah data</a>
+						<?php endif; ?>
 					</p>
 
 					<table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0" width="100%">

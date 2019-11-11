@@ -42,7 +42,7 @@
 				<!-- <div class=""></div> -->
 				<div class="alert alert-info">
 					<h4>
-						<center> Mohon untuk mengisi data diri dahulu! </center>
+						<center> Mohon untuk mengisi data diri dahulu! <a href="<?= base_url(); ?>user/show/<?= $this->session->userdata('id_user'); ?>" class="badge badge-xs-primary">klik untuk edit profil</a></center>
 					</h4>
 				</div>
 			<?php endif; ?>

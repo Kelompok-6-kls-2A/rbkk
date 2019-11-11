@@ -6,12 +6,12 @@
         				<a id="menu_toggle"><i class="fa fa-bars"></i></a>
         			</div>
 
-        			<?php if ($this->session->userdata('nama_user') == true) : ?>
+        			<?php if ($this->session->userdata('email') == true) : ?>
         				<ul class="nav navbar-nav navbar-right">
         					<li class="">
         						<a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
         							<img src="<?php echo base_url() ?>/assets/image/<?= $this->session->userdata('foto_profil'); ?>" alt=""><?= $this->session->userdata('email'); ?>
-        							<span class=" fa fa-angle-down"></span>
+        							<span class=""></span>
         						</a>
         						<ul class="dropdown-menu dropdown-usermenu pull-right">
         							<li><a href="<?= base_url(); ?>user/show/<?= $this->session->userdata('id_user'); ?>"> Profile</a></li>

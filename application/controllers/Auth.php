@@ -9,6 +9,7 @@ class Auth extends CI_Controller
 		parent::__construct();
 		//Do your magic here
 		$this->load->library('form_validation');
+		$this->load->library('Controllerauth');
 		$this->load->model('client/M_auth', 'authm');
 	}
 	public function index()
@@ -21,6 +22,7 @@ class Auth extends CI_Controller
 
 	public function store()
 	{
+
 		# code...
 		$this->form_validation->set_rules('email', 'Email', 'trim|required');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required');
@@ -32,7 +34,22 @@ class Auth extends CI_Controller
 			$this->load->view('Template/Authfooter');
 		} else {
 			# code...
-			$this->_login();
+			$uname = $this->input->post('email');
+			$pass = $this->input->post('password');
+
+			$user = $this->authm->getlogin($uname);
+			$_passModel = $user['password'];
+			$data = [
+				'id_user'		=> $user['id_user'],
+				'nama_user'		=> $user['nama_user'],
+				'foto_profil'	=> $user['foto_profil'],
+				'email'			=> $user['email'],
+				'idlvl'			=> $user['idlvl']
+			];
+
+			$urlSuccess = 'dashboard';
+			$urlWrong = 'auth';
+			Controllerauth::storeLogin($uname, $pass, $_passModel, $data, $urlSuccess, $urlWrong, 'flash', 'Masuk');
 		}
 	}
 
@@ -63,40 +80,6 @@ class Auth extends CI_Controller
 		}
 	}
 
-	private function _login()
-	{
-		$email = $this->input->post('email');
-		$password = $this->input->post('password');
-
-		$user = $this->authm->getlogin($email);
-
-		$_pass = $user['password'];
-		if ($email) {
-			# code...
-			if (password_verify($password, $_pass)) {
-				# code...
-				$data = [
-					'id_user'		=> $user['id_user'],
-					'nama_user'		=> $user['nama_user'],
-					'foto_profil'	=> $user['foto_profil'],
-					'email'			=> $user['email'],
-					'idlvl'			=> $user['idlvl']
-				];
-				$this->session->set_userdata($data);
-				$this->session->set_flashdata('flash', 'Masuk');
-				redirect('dashboard');
-			} else {
-				# code...
-				$this->session->set_flashdata('flash', '<div class="alert alert-danger" role="alert"> Wrong Password! </div>');
-				redirect('auth');
-			}
-		} else {
-			# code...
-			$this->session->set_flashdata('flash', '<div class="alert alert-danger" role="alert"> Email isnot registered! </div>');
-			redirect('auth');
-		}
-	}
-
 	public function logout()
 	{
 		# code...
@@ -107,12 +90,8 @@ class Auth extends CI_Controller
 			'email',
 			'idlvl'
 		];
-		$this->session->unset_userdata($data);
-		$this->session->set_flashdata('flash', '<div class="alert alert-success" role="alert">
-			You has been Log Out!
-		  </div>');
 
-		redirect('/');
+		Controllerauth::logout($data, 'auth', 'flash');
 	}
 }
 
