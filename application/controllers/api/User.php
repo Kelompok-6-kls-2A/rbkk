@@ -14,23 +14,27 @@ class User extends REST_Controller
 	{
 		parent::__construct();
 		$this->load->model('api/M_user', 'user');
+		$this->load->model('api/M_API', 'apimodel');
 		$this->load->library('form_validation');
 	}
 
 	public function index_get()
 	{
 		$id = $this->get('id_user');
+		// $id = 64;
 		if ($id === null) {
 			# code...
-			$data = $this->user->getAll();
+			// $data = $this->user->getAll();
+			$data2 = $this->apimodel->getAll($id, 'tb_user', 'lvluser', 'id_lvl', 'tb_user', 'idlvl')->result_array();
 		} else {
 			# code...
-			$data = $this->user->getAll($id);
+			$data2 = $this->apimodel->getAll($id, 'tb_user', 'lvluser', 'id_lvl', 'tb_user', 'idlvl', null, null, null, null, 'id_user')->result_array();
+			// $data = $this->user->getAll($id);
 		}
 
 		$this->set_response([
 			'status' => TRUE,
-			'data'   => $data,
+			'data'   => $data2,
 			'message' => 'Success'
 		], REST_Controller::HTTP_OK);
 	}
