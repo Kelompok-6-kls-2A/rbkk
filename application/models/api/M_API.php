@@ -28,6 +28,7 @@ class M_API extends CI_Model
 				$this->db->JOIN($joinTable2, $joinTable2 . '.' . $atribut3 . '=' . $atributjoin2 . '.' . $atribut4);
 			}
 			$this->db->WHERE($where, $id);
+			$query = $this->db->GET();
 		}
 		return $query;
 	}
