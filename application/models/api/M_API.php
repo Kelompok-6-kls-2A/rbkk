@@ -13,8 +13,7 @@ class M_API extends CI_Model
 			$this->db->FROM($table);
 			if ($joinTable1 != null) {
 				$this->db->JOIN($joinTable1, $joinTable1 . '.' . $atribut1 . '=' . $atributjoin1 . '.' . $atribut2);
-			}
-			if ($joinTable1 != null && $joinTable2 != null) {
+			} elseif ($joinTable1 != null && $joinTable2 != null) {
 				$this->db->JOIN($joinTable2, $joinTable2 . '.' . $atribut3 . '=' . $atributjoin2 . '.' . $atribut4);
 			}
 			$query = $this->db->GET();
@@ -23,14 +22,20 @@ class M_API extends CI_Model
 			$this->db->FROM($table);
 			if ($joinTable1 != null) {
 				$this->db->JOIN($joinTable1, $joinTable1 . '.' . $atribut1 . '=' . $atributjoin1 . '.' . $atribut2);
-			}
-			if ($joinTable1 != null && $joinTable2 != null) {
+			} elseif ($joinTable1 != null && $joinTable2 != null) {
 				$this->db->JOIN($joinTable2, $joinTable2 . '.' . $atribut3 . '=' . $atributjoin2 . '.' . $atribut4);
 			}
 			$this->db->WHERE($where, $id);
 			$query = $this->db->GET();
 		}
 		return $query;
+	}
+
+	public function insert($table, $data)
+	{
+		# code...
+		$this->db->INSERT($table, $data);
+		return $this->db->affected_rows();
 	}
 }
 

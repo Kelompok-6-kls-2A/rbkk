@@ -81,7 +81,8 @@ class User extends REST_Controller
 				"foto_profil"		=> $this->post('foto_profil'),
 				"idlvl"				=> $this->post('idlvl'),
 			);
-			$query = $this->user->insert($data);
+			// $query = $this->user->insert($data);
+			$query = $this->apimodel->insert('tb_user', $data);
 			if ($query > 0) {
 				# code...
 				$this->set_response([
