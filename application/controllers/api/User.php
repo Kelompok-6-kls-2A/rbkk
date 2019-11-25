@@ -13,7 +13,6 @@ class User extends REST_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('api/M_user', 'user');
 		$this->load->model('api/M_API', 'apimodel');
 		$this->load->library('form_validation');
 	}
@@ -43,7 +42,7 @@ class User extends REST_Controller
 	{
 		# code...
 		$email = $this->get('email');
-		$data = $this->user->getlogin($email);
+		$data = $this->apimodel->getlogin("tb_user", "idlvl", "lvluser", "id_lvl", "email", $email);
 		$this->set_response([
 			'status' => TRUE,
 			'data'   => $data,
@@ -121,7 +120,7 @@ class User extends REST_Controller
 				'password'		=> password_hash($this->post('password'), PASSWORD_DEFAULT),
 				'idlvl'			=> $this->post('idlvl')
 			];
-			$query = $this->user->register($data);
+			$query = $this->apimodel->insert("tb_user", $data);
 			if ($query) {
 				# code...
 				$this->set_response([
@@ -154,7 +153,7 @@ class User extends REST_Controller
 			"idlvl"				=> $this->put('idlvl'),
 		);
 
-		$query = $this->user->update($data, $id);
+		$query = $this->apimodel->update("tb_user", $data, "id_user", $id);
 		if ($query > 0) {
 			# code...
 			$this->set_response([
@@ -182,7 +181,7 @@ class User extends REST_Controller
 			], REST_Controller::HTTP_BAD_REQUEST);
 		} else {
 			# code...
-			$query = $this->user->delete($id);
+			$query = $this->apimodel->destroy("tb_user", "id_user", $id);
 			if ($query > 0) {
 				# code...
 				$this->set_response([

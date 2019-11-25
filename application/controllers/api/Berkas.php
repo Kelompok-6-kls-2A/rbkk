@@ -15,20 +15,20 @@ class Berkas extends REST_Controller
 	{
 		parent::__construct();
 		//Do your magic here
-		$this->load->model('api/M_berkas', 'berkas');
+		$this->load->model('api/M_API', 'apimoddel');
 		$this->load->library('form_validation');
 	}
 
 	public function index_get()
 	{
-		// Get Method 
+		// Get Method
 		$id = $this->get('id_berkas');
 		if ($id === null) {
 			# code...
-			$data = $this->berkas->getAll();
+			$data = $this->apimoddel->getAll($id, 'tb_berkas', 'tb_pekerjaan', 'id_pekerjaan', 'tb_berkas', 'id_pekerjaan', 'tb_user', 'id_user', 'tb_pekerjaan', 'id_user', null)->result_array();
 		} else {
 			# code...
-			$data = $this->berkas->getAll($id);
+			$data = $this->apimoddel->getAll($id, 'tb_berkas', 'tb_pekerjaan', 'id_pekerjaan', 'tb_berkas', 'id_pekerjaan', 'tb_user', 'id_user', 'tb_pekerjaan', 'id_user', 'id_pekerjaan')->result_array();
 		}
 
 		$this->set_response([
@@ -67,7 +67,7 @@ class Berkas extends REST_Controller
 				'lainlain'				=> $this->post('lainlain')
 			);
 
-			$query = $this->berkas->insert($data);
+			$query = $this->apimodel->insert('tb_berkas', $data);
 			if ($query > 0) {
 				# code...
 				$this->set_response([
@@ -97,7 +97,7 @@ class Berkas extends REST_Controller
 			'lainlain'				=> $this->put('lainlain')
 		);
 
-		$query = $this->berkas->update($data, $id);
+		$query = $this->apimodel->update('tb_berkas', $data, 'id_berkas', $id);
 
 		if ($query > 0) {
 			# code...
@@ -126,7 +126,7 @@ class Berkas extends REST_Controller
 			], REST_Controller::HTTP_BAD_REQUEST);
 		} else {
 			# code...
-			$query = $this->berkas->delete($id);
+			$query = $this->apimodel->delete('tb_berkas', 'id_berkas', $id);
 			if ($query > 0) {
 				# code...
 				$this->set_response([

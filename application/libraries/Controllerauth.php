@@ -61,8 +61,8 @@ class Controllerauth
 			if (password_verify($pass, $getpass)) {
 				$data = $arraySession;
 				$CI->session->set_userdata($data);
-				redirect($urlSuccess);
 				$CI->session->set_flashdata($flashName, $flashContent);
+				redirect($urlSuccess);
 			} else {
 				$CI->session->set_flashdata($flashName, $flashContent);
 				redirect($urlWrong);

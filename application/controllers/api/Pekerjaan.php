@@ -13,7 +13,7 @@ class Pekerjaan extends REST_Controller
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->model('api/M_Pekerjaan', 'pekerjaan');
+		$this->load->model('api/M_API', 'apimodel');
 		$this->load->library('form_validation');
 	}
 
@@ -22,10 +22,10 @@ class Pekerjaan extends REST_Controller
 		$id = $this->get('id_pekerjaan');
 		if ($id === null) {
 			# code...
-			$data = $this->pekerjaan->getAll();
+			$data = $this->apimodel->getAll($id, 'tb_pekerjaan', 'tb_user', 'id_user', 'tb_pekerjaan', 'id_user', null, null, null, null, null, 'tb_pekerjaan.created_add', 'DESC')->result_array();
 		} else {
 			# code...
-			$data = $this->pekerjaan->getAll($id);
+			$data = $this->apimodel->getAll($id, 'tb_pekerjaan', 'tb_user', 'id_user', 'tb_pekerjaan', 'id_user', null, null, null, null, null, 'tb_pekerjaan.created_add', 'DESC')->result_array();
 		}
 		$this->set_response([
 			'status' => TRUE,
@@ -61,7 +61,7 @@ class Pekerjaan extends REST_Controller
 				'jam_kerja'					=> $this->post('jam_kerja')
 			);
 
-			$query = $this->pekerjaan->insert($data);
+			$query = $this->apimodel->insert('tb_pekerjaan', $data);
 			if ($query > 0) {
 				# code...
 				$this->set_response([
@@ -96,7 +96,7 @@ class Pekerjaan extends REST_Controller
 
 		// var_dump($data,$id);
 
-		$query = $this->pekerjaan->update($data, $id);
+		$query = $this->apimodel->update('tb_pekerjaan', $data, 'id_pekerjaan', $id);
 		if ($query > 0) {
 			# code...
 			$this->set_response([
@@ -124,7 +124,7 @@ class Pekerjaan extends REST_Controller
 			], REST_Controller::HTTP_BAD_REQUEST);
 		} else {
 			# code...
-			$query = $this->pekerjaan->delete($id);
+			$query = $this->apimodel->destroy('tb_pekerjaan', 'id_pekerjaan', $id);
 			if ($query > 0) {
 				# code...
 				$this->set_response([
