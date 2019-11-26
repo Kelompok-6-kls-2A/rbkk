@@ -10,7 +10,8 @@ class Auth extends CI_Controller
 		//Do your magic here
 		$this->load->library('form_validation');
 		$this->load->library('Controllerauth');
-		$this->load->model('client/M_auth', 'authm');
+		// $this->load->model('client/M_auth', 'authm');
+		$this->load->model('client/My_Model', 'mod');
 	}
 	public function index()
 	{
@@ -37,7 +38,7 @@ class Auth extends CI_Controller
 			$uname = $this->input->post('email');
 			$pass = $this->input->post('password');
 
-			$user = $this->authm->getlogin($uname);
+			$user = $this->mod->getlogin('user/getlogin', 'email', $uname, 'data');
 			$_passModel = $user['password'];
 			$data = [
 				'id_user'		=> $user['id_user'],
@@ -69,7 +70,13 @@ class Auth extends CI_Controller
 
 		if ($this->form_validation->run() == FALSE) {
 			# code...
-			$this->authm->register();
+			$data = array(
+				"email"		=> $this->input->post('email', true),
+				"idlvl"		=> $this->input->post('idlvl', true),
+				"password"	=> $this->input->post('password', true)
+			);
+
+			$this->mod->register('user/register', $data);
 			$this->session->set_flashdata('flash', '<div class="alert alert-success" role="alert"> Register Sukses! </div>');
 			redirect('auth');
 		} else {

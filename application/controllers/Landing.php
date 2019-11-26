@@ -9,15 +9,16 @@ class Landing extends CI_Controller
 	{
 		parent::__construct();
 		//Do your magic here
-		$this->load->model('client/M_pekerjaan', 'pekerjaan');
-		$this->load->model('client/M_user', 'user');
+		// $this->load->model('client/M_pekerjaan', 'pekerjaan');
+		$this->load->model('client/My_Model', 'mod');
+		// $this->load->model('client/M_user', 'user');
 	}
 
 
 	public function index()
 	{
 		$data['title'] = 'Megawe';
-		$data['pekerjaan'] = $this->pekerjaan->getAll();
+		$data['pekerjaan'] = $this->mod->getAll('pekerjaan', 'data');
 		$this->load->view('Template/Head', $data);
 		$this->load->view('Template/Sidebar');
 		$this->load->view('Template/Topnavbar');

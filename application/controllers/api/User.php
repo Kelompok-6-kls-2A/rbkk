@@ -120,7 +120,7 @@ class User extends REST_Controller
 				'password'		=> password_hash($this->post('password'), PASSWORD_DEFAULT),
 				'idlvl'			=> $this->post('idlvl')
 			];
-			$query = $this->apimodel->insert("tb_user", $data);
+			$query = $this->apimodel->insert('tb_user', $data);
 			if ($query) {
 				# code...
 				$this->set_response([
@@ -153,7 +153,7 @@ class User extends REST_Controller
 			"idlvl"				=> $this->put('idlvl'),
 		);
 
-		$query = $this->apimodel->update("tb_user", $data, "id_user", $id);
+		$query = $this->apimodel->update('tb_user', $data, 'id_user', $id);
 		if ($query > 0) {
 			# code...
 			$this->set_response([
@@ -181,7 +181,7 @@ class User extends REST_Controller
 			], REST_Controller::HTTP_BAD_REQUEST);
 		} else {
 			# code...
-			$query = $this->apimodel->destroy("tb_user", "id_user", $id);
+			$query = $this->apimodel->destroy('tb_user', 'id_user', $id);
 			if ($query > 0) {
 				# code...
 				$this->set_response([

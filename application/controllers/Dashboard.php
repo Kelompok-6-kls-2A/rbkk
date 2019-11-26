@@ -9,8 +9,8 @@ class Dashboard extends CI_Controller
 	{
 		parent::__construct();
 		//Do your magic here
-		$this->load->model('client/M_pekerjaan', 'pekerjaan');
-		$this->load->model('client/M_user', 'user');
+		// $this->load->model('client/M_pekerjaan', 'pekerjaan');
+		// $this->load->model('client/M_user', 'user');
 		is_logged_in();
 	}
 

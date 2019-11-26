@@ -8,8 +8,9 @@ class User extends CI_Controller
 	{
 		parent::__construct();
 		//Do your magic here
-		$this->load->model('client/M_user', 'user');
-		$this->load->library('form_validation');
+		// $this->load->model('client/M_user', 'user');
+		$this->load->model('client/My_Model', 'mod');
+		// $this->load->library('form_validation');
 		is_logged_in();
 	}
 
@@ -20,7 +21,7 @@ class User extends CI_Controller
 			# code...
 			redirect('dashboard');
 		}
-		$data['users'] = $this->user->getAll();
+		$data['users'] = $this->mod->getAll('user', 'data');
 		$data['title'] = 'User';
 		$this->load->view('Template/Head', $data);
 		$this->load->view('Template/Sidebar');
@@ -33,7 +34,7 @@ class User extends CI_Controller
 	public function show($id)
 	{
 		# code...
-		$data['r'] = $this->user->getById($id);
+		$data['r'] = $this->mod->getById('user', 'id_user', $id, 'data');
 		$data['title'] = 'User-detail';
 		$this->load->view('Template/Head', $data);
 		$this->load->view('Template/Sidebar');
@@ -70,9 +71,23 @@ class User extends CI_Controller
 		$this->form_validation->set_rules('password', 'Password', 'trim|required');
 		$this->form_validation->set_rules('no_hp', 'NoHP', 'trim|required');
 
+		$_POST = $this->input->post();
+
+		$data = array(
+			"nama_user" 			=> $_POST['nama_user'],
+			"alamat_user"			=> $_POST['alamat_user'],
+			"tempattl_user"			=> $_POST['tempattl_user'],
+			"tl_user"				=> $_POST['tl_user'],
+			"email"					=> $_POST['email'],
+			"password"				=> $_POST['password'],
+			"no_hp"					=> $_POST['no_hp'],
+			"foto_profil"			=> "default.jpg",
+			"idlvl"					=> $_POST['idlvl']
+		);
+
 		if ($this->form_validation->run() == TRUE) {
 			# code...
-			$this->user->insert();
+			$this->mod->insert('user/store', $data);
 			$this->session->set_flashdata('flash', 'ditambahkan');
 			redirect('user');
 		} else {
@@ -86,7 +101,7 @@ class User extends CI_Controller
 	public function edit($id)
 	{
 		# code...
-		$data['r'] = $this->user->getById($id);
+		$data['r'] = $this->mod->getById('user', 'id_user', $id, 'data');
 		$data['title'] = 'Edit';
 		$this->load->view('Template/Head', $data);
 		$this->load->view('Template/Sidebar');
@@ -106,10 +121,25 @@ class User extends CI_Controller
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required');
 		$this->form_validation->set_rules('no_hp', 'NoHP', 'trim|required');
+		$_POST = $this->input->post();
+
+		$data = array(
+			"nama_user" 			=> $_POST['nama_user'],
+			"alamat_user"			=> $_POST['alamat_user'],
+			"tempattl_user"			=> $_POST['tempattl_user'],
+			"tl_user"				=> $_POST['tl_user'],
+			"email"					=> $_POST['email'],
+			"password"				=> $_POST['password'],
+			"no_hp"					=> $_POST['no_hp'],
+			"foto_profil"			=> $_POST['foto_profil'],
+			"idlvl"					=> $_POST['idlvl'],
+			"id_user"				=> $_POST['id_user']
+		);
 
 		if ($this->form_validation->run() == TRUE) {
 			# code...
-			$this->user->update();
+
+			$this->mod->update('user/update', $data);
 			$this->session->set_flashdata('flash', 'diubah');
 			redirect('user');
 		} else {
@@ -127,7 +157,7 @@ class User extends CI_Controller
 			redirect('user');
 		} else {
 			# code...
-			$delete = $this->user->delete($id);
+			$delete = $this->mod->delete('user/destroy', 'id_user', $id);
 			if ($delete) {
 				# code...
 				$this->session->set_flashdata('flash', 'dihapus');
