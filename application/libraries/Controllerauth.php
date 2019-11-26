@@ -114,7 +114,8 @@ class Controllerauth
 	{
 		$CI = get_instance();
 		$data = $arraySession;
-		$CI->session->unset_userdata($data);
+		// $CI->session->unset_userdata($data);
+		$CI->session->sess_destroy();
 		$CI->session->set_flashdata($flashName, '<div class="alert alert-success" role="alert"> You has been Log Out! </div>');
 		redirect($urlSuccess);
 	}
