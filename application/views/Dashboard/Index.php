@@ -38,6 +38,13 @@
 	<div class="row">
 		<div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash') ?>"></div>
 		<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="alert alert-info">
+				<h4>
+					<center>
+						<marquee behavior="" direction=""> Selamat Datang di Website Megawe</marquee>
+					</center>
+				</h4>
+			</div>
 			<?php if ($this->session->userdata('nama_user') == "" || $this->session->userdata('nama_user') == NULL) : ?>
 				<!-- <div class=""></div> -->
 				<div class="alert alert-info">
