@@ -8,7 +8,6 @@ class User extends CI_Controller
 	{
 		parent::__construct();
 		//Do your magic here
-		// $this->load->model('client/M_user', 'user');
 		$this->load->model('client/My_Model', 'mod');
 		$this->load->library('form_validation');
 		is_logged_in();
