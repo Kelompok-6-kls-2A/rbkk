@@ -42,7 +42,7 @@ class M_API extends CI_Model
 	{
 		# code...
 		$this->db->update($table, $data, [$atribut => $id]);
-		return $this->affected_rows();
+		return $this->db->affected_rows();
 	}
 
 	public function destroy($table, $atribut, $id)
