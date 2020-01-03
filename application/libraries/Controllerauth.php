@@ -7,7 +7,11 @@ class Controllerauth
 	 * @package        	CodeIgniter
 	 * @subpackage 		Libraries
 	 * @package 		Libraries
-	 * @author  		Abdul Qhodir Zaelany
+	 * kelompok  		Abdul Qhodir Zaelany
+	 *					Bryan Aulya Achmad I
+	 *					Adinda Jelfani
+	 * 					Nina isti
+	 * 					Firdia
 	 */
 
 
